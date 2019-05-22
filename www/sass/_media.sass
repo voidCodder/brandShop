@@ -1,0 +1,157 @@
+@import "vars"
+
+@media screen and (max-width: 1200px)
+    .container
+        padding: 0 1% 0
+        max-width: 1024px
+    //HEADER 
+    .container
+        &__logo
+            margin-right: 0
+        &__searchMenu
+            margin-right: 0
+    .mainHeader-wrap
+        justify-content: space-around
+    .mainPic
+        align-items: center
+        &__text
+            margin: 0
+            margin-left: 3%
+    //HEADER END
+
+    //CategorySale
+    .CategorySale-wrap
+        grid-template-columns: 560px
+        grid-template-rows: repeat(6, 261px)
+    .KidsSale
+        grid-row-start: 4
+        grid-row-end: 6
+    .WomenSale
+        grid-row-start: 3
+        grid-row-end: 4
+            //CategorySale END
+    .comment__text
+        padding-right: 10px
+    //CATALOG START
+
+
+    //CATALOG END
+
+    .feature
+        &-wrap
+            margin: 0 auto
+            flex-direction: column
+        &-img
+            margin: 0 auto
+        &__boxes
+            max-width: 768px
+            margin: 0 auto
+            flex-direction: row  
+            padding-bottom: 36px
+    //
+    
+            //SINGLE_PAGE
+    .hero__header-wrap
+        justify-content: space-around
+            //
+    .ship-nav-item__block-wrap
+        padding-right: 0   
+
+        //PRODUCT
+    .features-wrap
+        padding: 100px 3%
+
+        //Shopping_cart
+    .shopping-cart-forms-wrap
+        flex-wrap: wrap
+        form
+            margin-bottom: 20px
+
+@media screen and (max-width: 1024px)
+    .container
+        max-width: 820px
+
+        //NavMenu
+    .brushMenu__dropdown:hover .dropdown__cart
+        display: none
+    .navMenu__container
+        >ul
+            flex-direction: column
+    .dropdown-nav
+        width: 566px
+        top: 7px
+        left: 130px
+    .containerDropdown__categories
+        margin-right: 0px
+        //
+
+        //bottomMenu
+    .bottomMenu
+        &-container
+            justify-content: space-between
+        &__category
+            margin-left: 0
+        &__comment
+            width: auto
+    .comment__text
+        display: none
+        //
+     
+@media screen and (max-width: 820px)
+    .container
+        max-width: 768px
+    .container__logo
+        b,span
+            display: none
+    .mainHeader-wrap
+        height: 100%
+    .mainFooter-wrap
+        height: 100%
+    .subscribe
+        &-wrap
+            &_sub
+                padding:
+                    left: 0
+                    right: 0
+                    top: 0
+        &__quote
+            display: none
+        &__subscribe
+            margin: auto
+    //index.php
+    .feature
+        &-img
+            display: none
+        .container
+            padding: 0
+            max-width: 100%
+            width: 100%
+        &__boxes
+            max-width: 100%
+            padding:
+                left: 0
+                right: 0 
+            .box
+                height: auto
+                margin-right: 10px
+                &:nth-child(3)
+                   margin-right: 0px
+
+    //Shopping_cart
+    .shopping-cart-forms-wrap
+        flex-direction: column
+        align-items: center
+    
+@media screen and (max-width: 768px)
+    .container
+        max-width: 600px
+    //NAvMenu
+    .navMenu__container
+        width: unset
+    //
+    .bottomMenu
+        &__comment
+            .logo
+                b, span
+                    display: none
+                    

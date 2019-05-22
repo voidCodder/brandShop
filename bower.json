@@ -1,0 +1,23 @@
+{
+  "name": "optimizedhtml",
+  "description": "",
+  "main": "",
+  "authors": [
+    ""
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/voidCodder/ShopGB",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "normalize.css": "^8.0.1"
+  }
+}
