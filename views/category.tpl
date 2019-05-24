@@ -73,13 +73,13 @@
                     {if isset($rsBrands)}
                     <ul class="cat-nav cat-nav-sub">
 
-                        {foreach $rsBrands as $item}
+                        {foreach $rsBrands as $item name=brands}
 
                             <li class="cat-nav-item">
                                 <span class="cat-nav-item_li">
-                                    <div class="cat-nav-block-checkbox flex">
-                                        <a href="#" class="link">{$item}</a>
-                                        <input type="checkbox" name="category">
+                                    <div class="cat-nav-block-checkbox">
+                                        <input id="cat-brand_{$smarty.foreach.brands.iteration}" type="checkbox" name="category">
+                                        <label for="cat-brand_{$smarty.foreach.brands.iteration}" class="link">{$item}</label>
                                     </div>
                                 </span>
                             </li>
@@ -115,59 +115,62 @@
                     </div>
                     <div class="products-sort-cat products-sort-cat_size">
                         <span class="products-sort-cat__title">Size</span>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XXS
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XS
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            S
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            M
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            L
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XL
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XXL
-                        </label>
+
+                        <div class="cat-nav-block-checkbox select-size">
+
+                        {$arSize=['XXS','XS','S','M','L','XL','XXL']}
+                        {foreach $arSize as $size name=sizes}
+                        
+                            <input id="cat-size_{$size}" type="checkbox" name="size">
+                            <label for="cat-size_{$size}">{$size}</label>
+                        {/foreach}
+
+                        </div>
+
+                        
                     </div>
                     <div class="products-sort-cat">
                         <span class="products-sort-cat__title">pRICE</span>
-                        <input type="range" name="" id="" multiple min="0" max="180" step="5"> <!-- JS -->
+                        {* <input type="range" name="" id="" multiple min="0" max="180" step="5">  *}
+                        {* <input type="range" name="" id=""> <br> *}
+
+                        <div id="slider"></div>
+                        <div class="slider-price flex">
+                            <div>
+                                <span>$</span>
+                                <input type="text" name="" id="input-low">
+                            </div>
+                            <div>
+                                <span>$</span>
+                                <input type="text" name="" id="input-up">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="products-sort-by flex">
-                    <div class="products-sort-by-container">
-                        <label>Sort By</label>
-                        <select name="sort-by">
-                            <option>Name</option>
-                            <option>Increase price</option>
-                            <option>Decrease price</option>
-                            <option>On new</option>
-                            <option>On discounts</option>
-                        </select>
+                    <div class="flex">
+                        <div class="products-sort-by-container">
+                            <label>Sort By</label>
+                            <select name="sort-by">
+                                <option>Name</option>
+                                <option>Increase price</option>
+                                <option>Decrease price</option>
+                                <option>On new</option>
+                                <option>On discounts</option>
+                            </select>
+                        </div>
+                        <div class="products-sort-by-container">
+                            <label>Show</label>
+                            <select name="show-kolvo">
+                                <option>30</option>
+                                <option>15</option>
+                                <option>9</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="products-sort-by-container">
-                        <label>Show</label>
-                        <select name="show-kolvo">
-                            <option>6</option>
-                            <option>9</option>
-                            <option>12</option>
-                            <option>All</option>
-                        </select>
+                    <div>
+                        <button id="filter-clear" class="products-sort-by__button accent-button">Clear</button>
+                        <button id="filter-apply" class="products-sort-by__button  accent-button">Apply</button>
                     </div>
                 </div>
             </aside>
@@ -194,18 +197,30 @@
             </article>
             <aside class="paginator paginator_page flex">
                 <span class="paginator__pages">
-                    <a href="#" class="paginator__num">
+
+{if $paginator['currentPage'] != 1}
+                    <a href="{$paginator['link']}{$paginator['currentPage']-1}" class="paginator__num">
                         <i class="far fa-chevron-left"></i>
                     </a>
-                    <a href="#" class="paginator__num button_toggled">1</a>
-                    <a href="#" class="paginator__num">2</a>
-                    <a href="#" class="paginator__num">3</a>
-                    <a href="#" class="paginator__num">4</a>
-                    <a href="#" class="paginator__num">5</a>
-                    <a href="#" class="paginator__num">6</a>
-                    <a href="#" class="paginator__num">
+{/if}
+
+{assign var=pg value=1}
+{while $paginator['pageCnt'] >= $pg}
+                    
+                    {if $paginator['currentPage'] == $pg}
+                        <a href="{$paginator['link']}{$pg}" class="paginator__num button_toggled">{$pg}</a>
+                    {else}
+                        <a href="{$paginator['link']}{$pg}" class="paginator__num">{$pg}</a>
+                    {/if}
+
+{assign var=pg value=$pg+1} 
+{/while}
+
+{if $paginator['currentPage'] < $paginator['pageCnt']}
+                    <a href="{$paginator['link']}{$paginator['currentPage']+1}" class="paginator__num">
                         <i class="far fa-chevron-right"></i>
                     </a>
+{/if}                
                 </span>
                 <button class="paginator__button">
                     <span>View All</span>

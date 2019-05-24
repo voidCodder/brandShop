@@ -68,7 +68,7 @@
 
 				</section>
 				<footer>
-					<a href="/category/0/"><button class="catalog__button">Browse All Product</button></a>
+					<a href="/category/0/"><button class="catalog__button accent-button">Browse All Product</button></a>
 				</footer>
 			</div>
 		</div>

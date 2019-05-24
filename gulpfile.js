@@ -42,6 +42,7 @@ gulp.task('styles', function() {
 gulp.task('scripts', function () {
     return gulp.src([
             'www/libs/jquery/dist/jquery.min.js',
+            'www/libs/nouislider/distribute/nouislider.min.js',
             'www/js/main.js', // Always at the end
         ])
         .pipe(concat('scripts.min.js'))

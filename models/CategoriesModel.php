@@ -81,8 +81,9 @@ function getCatById($catId) {
  * 
  * @return array массив списка брендов
  */
-function getBrandsForCat($ar) {
+function getBrandsForCat($ar) { //FIXME: Поправить не существующие категории
     $rs = [];
+
     foreach($ar as $item){
         $rs[] = $item['brand'];
     }

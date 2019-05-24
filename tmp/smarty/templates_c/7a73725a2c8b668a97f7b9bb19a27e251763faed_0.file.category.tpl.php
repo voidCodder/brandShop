@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-22 22:14:12
+/* Smarty version 3.1.33, created on 2019-05-23 21:46:31
   from 'C:\OSPanel\domains\brandShop\views\category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce59f849db539_74104140',
+  'unifunc' => 'content_5ce6ea8745c146_82350924',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a73725a2c8b668a97f7b9bb19a27e251763faed' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\category.tpl',
-      1 => 1558552449,
+      1 => 1558637188,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/menuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5ce59f849db539_74104140 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6ea8745c146_82350924 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:parts/menuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -118,17 +118,22 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     <ul class="cat-nav cat-nav-sub">
 
                         <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsBrands']->value, 'item');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsBrands']->value, 'item', false, NULL, 'brands', array (
+  'iteration' => true,
+));
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['item']->value) {
+$_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']++;
 ?>
 
                             <li class="cat-nav-item">
                                 <span class="cat-nav-item_li">
-                                    <div class="cat-nav-block-checkbox flex">
-                                        <a href="#" class="link"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
-</a>
-                                        <input type="checkbox" name="category">
+                                    <div class="cat-nav-block-checkbox">
+                                        <input id="cat-brand_<?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration'] : null);?>
+" type="checkbox" name="category">
+                                        <label for="cat-brand_<?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration'] : null);?>
+" class="link"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+</label>
                                     </div>
                                 </span>
                             </li>
@@ -166,59 +171,71 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                     <div class="products-sort-cat products-sort-cat_size">
                         <span class="products-sort-cat__title">Size</span>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XXS
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XS
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            S
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            M
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            L
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XL
-                        </label>
-                        <label>
-                            <input type="checkbox" name="size" id="">
-                            XXL
-                        </label>
+
+                        <div class="cat-nav-block-checkbox select-size">
+
+                        <?php $_smarty_tpl->_assignInScope('arSize', array('XXS','XS','S','M','L','XL','XXL'));?>
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['arSize']->value, 'size', false, NULL, 'sizes', array (
+));
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['size']->value) {
+?>
+                        
+                            <input id="cat-size_<?php echo $_smarty_tpl->tpl_vars['size']->value;?>
+" type="checkbox" name="size">
+                            <label for="cat-size_<?php echo $_smarty_tpl->tpl_vars['size']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['size']->value;?>
+</label>
+                        <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+                        </div>
+
+                        
                     </div>
                     <div class="products-sort-cat">
                         <span class="products-sort-cat__title">pRICE</span>
-                        <input type="range" name="" id="" multiple min="0" max="180" step="5"> <!-- JS -->
+                                                
+                        <div id="slider"></div>
+                        <div class="slider-price flex">
+                            <div>
+                                <span>$</span>
+                                <input type="text" name="" id="input-low">
+                            </div>
+                            <div>
+                                <span>$</span>
+                                <input type="text" name="" id="input-up">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="products-sort-by flex">
-                    <div class="products-sort-by-container">
-                        <label>Sort By</label>
-                        <select name="sort-by">
-                            <option>Name</option>
-                            <option>Increase price</option>
-                            <option>Decrease price</option>
-                            <option>On new</option>
-                            <option>On discounts</option>
-                        </select>
+                    <div class="flex">
+                        <div class="products-sort-by-container">
+                            <label>Sort By</label>
+                            <select name="sort-by">
+                                <option>Name</option>
+                                <option>Increase price</option>
+                                <option>Decrease price</option>
+                                <option>On new</option>
+                                <option>On discounts</option>
+                            </select>
+                        </div>
+                        <div class="products-sort-by-container">
+                            <label>Show</label>
+                            <select name="show-kolvo">
+                                <option>30</option>
+                                <option>15</option>
+                                <option>9</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="products-sort-by-container">
-                        <label>Show</label>
-                        <select name="show-kolvo">
-                            <option>6</option>
-                            <option>9</option>
-                            <option>12</option>
-                            <option>All</option>
-                        </select>
+                    <div>
+                        <button id="filter-clear" class="products-sort-by__button accent-button">Clear</button>
+                        <button id="filter-apply" class="products-sort-by__button  accent-button">Apply</button>
                     </div>
                 </div>
             </aside>
@@ -258,18 +275,41 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </article>
             <aside class="paginator paginator_page flex">
                 <span class="paginator__pages">
-                    <a href="#" class="paginator__num">
+
+<?php if ($_smarty_tpl->tpl_vars['paginator']->value['currentPage'] != 1) {?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['paginator']->value['link'];
+echo $_smarty_tpl->tpl_vars['paginator']->value['currentPage']-1;?>
+" class="paginator__num">
                         <i class="far fa-chevron-left"></i>
                     </a>
-                    <a href="#" class="paginator__num button_toggled">1</a>
-                    <a href="#" class="paginator__num">2</a>
-                    <a href="#" class="paginator__num">3</a>
-                    <a href="#" class="paginator__num">4</a>
-                    <a href="#" class="paginator__num">5</a>
-                    <a href="#" class="paginator__num">6</a>
-                    <a href="#" class="paginator__num">
+<?php }?>
+
+<?php $_smarty_tpl->_assignInScope('pg', 1);
+while ($_smarty_tpl->tpl_vars['paginator']->value['pageCnt'] >= $_smarty_tpl->tpl_vars['pg']->value) {?>
+                    
+                    <?php if ($_smarty_tpl->tpl_vars['paginator']->value['currentPage'] == $_smarty_tpl->tpl_vars['pg']->value) {?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['paginator']->value['link'];
+echo $_smarty_tpl->tpl_vars['pg']->value;?>
+" class="paginator__num button_toggled"><?php echo $_smarty_tpl->tpl_vars['pg']->value;?>
+</a>
+                    <?php } else { ?>
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['paginator']->value['link'];
+echo $_smarty_tpl->tpl_vars['pg']->value;?>
+" class="paginator__num"><?php echo $_smarty_tpl->tpl_vars['pg']->value;?>
+</a>
+                    <?php }?>
+
+<?php $_smarty_tpl->_assignInScope('pg', $_smarty_tpl->tpl_vars['pg']->value+1);?> 
+<?php }?>
+
+
+<?php if ($_smarty_tpl->tpl_vars['paginator']->value['currentPage'] < $_smarty_tpl->tpl_vars['paginator']->value['pageCnt']) {?>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['paginator']->value['link'];
+echo $_smarty_tpl->tpl_vars['paginator']->value['currentPage']+1;?>
+" class="paginator__num">
                         <i class="far fa-chevron-right"></i>
                     </a>
+<?php }?>                
                 </span>
                 <button class="paginator__button">
                     <span>View All</span>

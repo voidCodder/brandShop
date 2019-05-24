@@ -18,7 +18,14 @@ main
 	max-width: 1140px
 	margin: auto
 	height: 100%
-
+	
+.accent-button
+	background-color: #f16d7f
+	color: #fff
+	border-width: 2px
+	border-color: #fff
+	&:focus
+		outline: none
 
 			// HEADER START
 .mainHeader 
@@ -114,14 +121,11 @@ main
 		&:hover
 			cursor: pointer
 	&__myAcc
-		background-color: $accent
-		color: #ffffff
 		font-family: $default-font
 		font-size: 15px
 		font-weight: 400
 		line-height: 32px
 		letter-spacing: 0.38px
-		border-width: 0px
 		height: 40px
 		width: 130px
 		padding-left: 20px
@@ -396,15 +400,12 @@ main
 			grid-template-columns: repeat(auto-fit, 261px) // If < 4 items, to try just-cont: center
 	&__button
 		display: block
-		background-color: $accent
 		margin: 0 auto
 		padding: 0 19px 0 24px
-		color: #ffffff
 		font-size: 16px
 		font-weight: 700
 		line-height: 51px
 		letter-spacing: 0.4px
-		border-width: 0
 		&::after
 			content: "\f178"
 			font-family: FontAwesome
@@ -1003,7 +1004,6 @@ main
 		a
 			display: flex
 		&-sub
-			// display: none     //TODO: for JS
 			padding-top: 20px
 		&-item
 			padding: 0 0 10px
@@ -1013,9 +1013,7 @@ main
 				border-bottom: 1px solid #ebebeb
 			&_li
 				display: block
-				&_active //TODO: for JS
-					color: $accent
-					// border-left: 5px solid $accent
+
 
 .n-item_li1
 	padding-top: 10px
@@ -1054,6 +1052,7 @@ main
 		width: 230px
 		&__title
 			display: block
+			margin-bottom: 10px
 			color: #6f6e6e
 			font-family: $default-font
 			font-size: 14px
@@ -1085,6 +1084,7 @@ main
 	&-by
 		padding: 10px
 		margin-bottom: 48px
+		justify-content: space-between
 		flex-wrap: wrap
 		align-items: center
 		background-color: #f3f3f3
@@ -1104,20 +1104,11 @@ main
 			border-width: 0px
 			border-left: 1px solid #ebebeb
 			color: #6f6e6e
-			
-input[type=range]
-	-webkit-appearance: none
-	width: 100%
-	height: 6px
-	border-radius: 3px
-	background-color: #f0f0f0
-	&::-webkit-slider-thumb
-		-webkit-appearance: none
-		width: 14px
-		height: 14px
-		background-color: #f16d7f
-		border-radius: 10px
-		cursor: pointer
+			background-color: #fff
+		&__button
+			width: 100px
+			height: 30px
+
 
 .paginator
 	&_page
@@ -1130,6 +1121,9 @@ input[type=range]
 		font-size: 16px
 		font-weight: bold
 		line-height: 26px
+		&:focus,&:hover
+			color: $accent
+        
 	&__button
 		width: 150px
 		height: 44px
@@ -1324,11 +1318,126 @@ input[type=range]
         font-size: 11px
 
 .cat-nav-sub
+    display: none
     padding-left: 20px
 
+//checbox
 .cat-nav-block-checkbox
-    width: 60%
-    justify-content: space-between
+    input[type="checkbox"] 
+        display: none
+        &:checked + label,
+        &:not(:checked) + label
+            display: inline-block
+            position: relative
+            padding-left: 28px
+            line-height: 20px
+            cursor: pointer
+        &:checked + label:before, 
+        &:not(:checked) + label:before
+            content: ""
+            position: absolute
+            left: 0px
+            top: 0px
+            width: 18px
+            height: 18px
+            border: 1px solid #dddddd
+            background-color: #ffffff
+            border-radius: 2px
+        &:checked + label:after, 
+        &:not(:checked) + label:after
+            content: ""
+            position: absolute
+            transition: all 0.2s ease
+            left: 2px
+            top: 4px
+            width: 14px
+            height: 8px
+            border-radius: 1px
+            border-left: 4px solid $accent
+            border-bottom: 4px solid $accent
+            transform: rotate(-45deg)
+        &:not(:checked) + label:after
+            opacity: 0
+        &:checked + label:after
+            opacity: 1
+
+.select-size
+    display: flex
+    flex-wrap: wrap
+    >label
+        margin-right: 15px
+
+
+
+
+// input[type=range]
+// 	-webkit-appearance: none
+// 	width: 100%
+// 	height: 6px
+// 	border-radius: 3px
+// 	background-color: #f0f0f0
+// 	&::-webkit-slider-thumb
+// 		-webkit-appearance: none
+// 		width: 14px
+// 		height: 14px
+// 		background-color: #f16d7f
+// 		border-radius: 10px
+// 		cursor: pointer
+
+    //Слайдер Переопределение
+.noUi-horizontal 
+    height: 8px
+.noUi-horizontal .noUi-handle 
+    width: 14px
+    height: 14px
+    // left: -17px
+    top: -4px
+.noUi-handle
+    background-color: #f16d7f
+    border-radius: 10px
+    box-shadow: unset
+    outline: none
+    &:focus
+        outline: none
+    &:hover
+        cursor: pointer
+html:not([dir=rtl]) .noUi-horizontal .noUi-handle 
+    right: -7px
+.noUi-connect
+    background-color: #f16d7f
+.noUi-touch-area 
+    height: 140%
+    width: 140%
+
+#slider
+	margin-bottom: 15px
+
+//Input под слайдер
+#input-low,
+#input-up
+    width: 75px
+    border: 0px
+    background: #fff
+    color: #6f6e6e
+    font-family: $open-sans-reg
+    font-size: 14px
+    font-weight: 400
+    line-height: 26px
+#input-up
+    text-align: right
+.slider-price
+	justify-content: space-between
+	div:last-child
+		position: relative
+		span
+			position: absolute
+			top: 6px
+			left: 11px
+
+
+
+
+
 
 
 

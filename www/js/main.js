@@ -245,27 +245,62 @@ function showProducts(id) {
 
 
 
+
+
+
 /**
  * Акордеон (страница категории)
  * 
  */
-
-$(document).ready(function () {
-    showSubCat();
-    showSubCat1();
-})
-
-
-function showSubCat() {
+$(function () {
     $('.cat-nav-item_span1').click(function (e) {
         $(this).parent().children('.cat-nav-sub').slideToggle(1000);
         return false;
     });
-}
-
-function showSubCat1() {
+});
+$(function () {
     $('.sub-cat1').click(function (e) {
         $(this).parent().next().slideToggle(1000);
         return false;
     });
-}
+});
+
+
+/**
+ * Nouislider
+ * 
+ */
+$(function () {
+var slider = document.getElementById('slider');
+
+noUiSlider.create(slider, {
+    start: [0,1000],
+    connect: true,
+    step: 10,
+    range: {
+        'min': [0],
+        'max': [1000]
+    },
+    
+});
+    
+    var inputs = [
+        document.getElementById('input-low'),
+        document.getElementById('input-up')
+    ];
+
+    //При изменение обновлять textbox
+    slider.noUiSlider.on('update', function (values, handle) {
+        inputs[handle].value = values[handle];
+    });
+    
+    //При изменение textbox обновлять слайдер
+    inputs.forEach(function (input, handle) {
+        input.addEventListener('change', function () {
+            slider.noUiSlider.setHandle(handle, this.value);
+        });
+    });
+
+    //Получение значения
+    // slider.noUiSlider.get()
+});

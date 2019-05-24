@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-21 14:06:49
+/* Smarty version 3.1.33, created on 2019-05-23 18:10:00
   from 'C:\OSPanel\domains\brandShop\views\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce3dbc9289623_84661354',
+  'unifunc' => 'content_5ce6b7c8afc794_82661528',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8b009033da9f99dd9dcc814c72730ff72d8b22e0' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\header.tpl',
-      1 => 1558436417,
+      1 => 1558624194,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/nav.tpl' => 1,
   ),
 ),false)) {
-function content_5ce3dbc9289623_84661354 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce6b7c8afc794_82661528 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +75,7 @@ js/scripts.min.js"><?php echo '</script'; ?>
 
                     </div>
 
-                    <button class="brushMenu__myAcc">My Account</button>
+                    <button class="brushMenu__myAcc accent-button">My Account</button>
                 </div>
             </div>
         </div>

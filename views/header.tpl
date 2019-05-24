@@ -47,7 +47,7 @@
 
                     </div>
 
-                    <button class="brushMenu__myAcc">My Account</button>
+                    <button class="brushMenu__myAcc accent-button">My Account</button>
                 </div>
             </div>
         </div>
