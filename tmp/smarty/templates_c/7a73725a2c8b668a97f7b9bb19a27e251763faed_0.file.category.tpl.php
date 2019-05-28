@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-23 21:46:31
+/* Smarty version 3.1.33, created on 2019-05-24 20:28:48
   from 'C:\OSPanel\domains\brandShop\views\category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce6ea8745c146_82350924',
+  'unifunc' => 'content_5ce829d06d5de6_24427378',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a73725a2c8b668a97f7b9bb19a27e251763faed' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\category.tpl',
-      1 => 1558637188,
+      1 => 1558718801,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/menuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5ce6ea8745c146_82350924 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ce829d06d5de6_24427378 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:parts/menuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -130,7 +130,8 @@ $_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']++;
                                 <span class="cat-nav-item_li">
                                     <div class="cat-nav-block-checkbox">
                                         <input id="cat-brand_<?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration'] : null);?>
-" type="checkbox" name="category">
+" type="checkbox" name="brands" value="<?php echo $_smarty_tpl->tpl_vars['item']->value;?>
+">
                                         <label for="cat-brand_<?php echo (isset($_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration']) ? $_smarty_tpl->tpl_vars['__smarty_foreach_brands']->value['iteration'] : null);?>
 " class="link"><?php echo $_smarty_tpl->tpl_vars['item']->value;?>
 </label>
@@ -183,7 +184,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['size']->value) {
 ?>
                         
                             <input id="cat-size_<?php echo $_smarty_tpl->tpl_vars['size']->value;?>
-" type="checkbox" name="size">
+" type="checkbox" name="sizes" value="<?php echo $_smarty_tpl->tpl_vars['size']->value;?>
+">
                             <label for="cat-size_<?php echo $_smarty_tpl->tpl_vars['size']->value;?>
 "><?php echo $_smarty_tpl->tpl_vars['size']->value;?>
 </label>
@@ -198,7 +200,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </div>
                     <div class="products-sort-cat">
                         <span class="products-sort-cat__title">pRICE</span>
-                                                
                         <div id="slider"></div>
                         <div class="slider-price flex">
                             <div>

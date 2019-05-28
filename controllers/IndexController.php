@@ -18,7 +18,7 @@ function indexAction($smarty) {
 
     $rsCategories = getAllMainCatsWithChildren();
     $rsProducts = getLastProducts(8); 
-// d($rsProducts);
+
     $smarty->assign('pageTitle', 'BrandShop');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProducts', $rsProducts);

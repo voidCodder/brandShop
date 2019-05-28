@@ -77,7 +77,7 @@ function getCatById($catId) {
 /**
  * Получить список брендов по категориям
  *
- * @param array $ar массив товаров
+ * @param array $ar массив всех товаров категории
  * 
  * @return array массив списка брендов
  */

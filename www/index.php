@@ -1,7 +1,7 @@
 <?php
-// session_start(); // стартуем сессию
+session_start(); // стартуем сессию
 
-// // если в сессии нет массива корзины, то создаем его
+// если в сессии нет массива корзины, то создаем его
 // if (!isset($_SESSION['cart'])) {
 //     $_SESSION['cart'] = [];
 // }
@@ -18,9 +18,9 @@ $controllerName = isset($_GET['controller']) ? ucfirst($_GET['controller']) : 'I
 $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 
 // Если в сессии есть данные об авторизированном пользователе, то передаем их в шаблон
-// if (isset($_SESSION['user'])) {
-//     $smarty->assign('arUser', $_SESSION['user']);
-// }
+if (isset($_SESSION['user'])) {
+    $smarty->assign('arUser', $_SESSION['user']);
+}
 
 
 

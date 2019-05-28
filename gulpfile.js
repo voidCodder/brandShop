@@ -11,21 +11,11 @@ var gulp          = require('gulp'),
 	autoprefixer  = require('gulp-autoprefixer'),
 	notify        = require('gulp-notify');
 
+
 gulp.task('browser-sync', function() {
 	browserSync.init({
 		proxy:"brandshop",
 		notify: false,
-		
-	/* browserSync({
-		server: {
-			baseDir: 'www',
-			directory: true // показывать список файлов
-		},
-		notify: false, */
-
-		// open: false,
-		// online: false, // Work Offline Without Internet Connection
-		// tunnel: true, tunnel: "projectname", // Demonstration page: http://projectname.localtunnel.me
 	});
 });
 
@@ -40,27 +30,20 @@ gulp.task('styles', function() {
 });
 
 gulp.task('scripts', function () {
-    return gulp.src([
-            'www/libs/jquery/dist/jquery.min.js',
-            'www/libs/nouislider/distribute/nouislider.min.js',
-            'www/js/main.js', // Always at the end
+    return gulp.src([ // Берем все необходимые библиотеки
+        'www/libs/**/*.js',
+        'www/js/**/*.js' + '',
         ])
         .pipe(concat('scripts.min.js'))
-        // .pipe(uglify()) // Mifify js (opt.)
-        .pipe(gulp.dest('www/js'))
-        .pipe(browserSync.reload({
-            stream: true
-        }))
+        .pipe(uglify()) // Mifify js (opt.)
+        .pipe(gulp.dest('www/dist/js/'))
 });
-
-// gulp.task('codeHTML', function() {
-// 	return gulp.src('www/*.html')
-// 	.pipe(browserSync.reload({ stream: true }))
-// });
 
 	gulp.task('watch', function() {
 		gulp.watch('www/'+syntax+'/**/*.'+syntax+'', gulp.parallel('styles'));
-		gulp.watch(['libs/**/*.js', 'www/js/main.js'], gulp.parallel('scripts'));
-        // gulp.watch('www/*.html', gulp.parallel('codeHTML'));
+		gulp.watch([
+		    'www/libs/**/*.js',
+            'www/js/**/*.js' + '',
+        ], gulp.parallel('scripts'));
 	});
 	gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));

@@ -78,7 +78,7 @@
                             <li class="cat-nav-item">
                                 <span class="cat-nav-item_li">
                                     <div class="cat-nav-block-checkbox">
-                                        <input id="cat-brand_{$smarty.foreach.brands.iteration}" type="checkbox" name="category">
+                                        <input id="cat-brand_{$smarty.foreach.brands.iteration}" type="checkbox" name="brands" value="{$item}">
                                         <label for="cat-brand_{$smarty.foreach.brands.iteration}" class="link">{$item}</label>
                                     </div>
                                 </span>
@@ -121,7 +121,7 @@
                         {$arSize=['XXS','XS','S','M','L','XL','XXL']}
                         {foreach $arSize as $size name=sizes}
                         
-                            <input id="cat-size_{$size}" type="checkbox" name="size">
+                            <input id="cat-size_{$size}" type="checkbox" name="sizes" value="{$size}">
                             <label for="cat-size_{$size}">{$size}</label>
                         {/foreach}
 
@@ -131,9 +131,6 @@
                     </div>
                     <div class="products-sort-cat">
                         <span class="products-sort-cat__title">pRICE</span>
-                        {* <input type="range" name="" id="" multiple min="0" max="180" step="5">  *}
-                        {* <input type="range" name="" id=""> <br> *}
-
                         <div id="slider"></div>
                         <div class="slider-price flex">
                             <div>

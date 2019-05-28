@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="icon" href="{$templateWebPath}img/favicon/favicon.ico">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{$templateWebPath}css/main.min.css">
-    <script src="{$templateWebPath}js/scripts.min.js"></script>
+    <script src="{$templateWebPath}dist/js/scripts.min.js"></script>
 
     <title>{$pageTitle}</title>
 </head>
@@ -39,15 +41,47 @@
                             </div>
                             <span class="cart__totalPrice">TOTAL $500.00</span>
                             <div class="cart__buttons">
-                                <button>Checkout</button>
-                                <button>Go to cart</button>
+                                <button><a href="/checkout/">Checkout</a></button>
+                                <button><a href="/cart/">Go to cart</a></button>
                             </div>
                         </div>
                         <!-- END CART DROPDOWN-MENU -->
 
                     </div>
 
-                    <button class="brushMenu__myAcc accent-button">My Account</button>
+                    <div class="pos-rel">
+                        <button class="brushMenu__myAcc accent-button" id="showMyAcc">My Account</button>
+                        <div class="dropdown__myAcc flex" id="myAccContainer">           
+                            
+
+                    {if isset($arUser)}
+                             <div id="userBox">
+                                <span><a href="/user/" id="userLink">{$arUser['displayName']}</a></span>
+                                <span><a href="/user/logout/">Выход</a></span>
+                            </div>
+                    {else}
+                                
+                            <div id="userBox" class="hideme">
+                                <span><a href="#" id="userLink"></a></span>
+                                <span><a href="/user/logout/">Выход</a></span>
+                            </div>
+                            <div class="myAcc__loginBox" id="loginBox">
+                                <span class="myAcc__title-text">Login</span>
+                                <input type="text" name="loginEmail" id="loginEmail">
+                                <input type="text" name="loginPwd" id="loginPwd">
+                                <button class="accent-button" id="loginBtn">login</button>
+                            </div>                           
+                            <div class="myAcc__registerBox" id="registerBox">
+                                <span class="myAcc__title-text">Register</span>
+                                <input type="text" name="email" id="email">
+                                <input type="text" name="pwd1" id="pwd1">
+                                <input type="text" name="pwd2" id="pwd2">
+                                <button class="accent-button" id="registerBtn" >register</button>
+                            </div>
+                    {/if}     
+                        
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
