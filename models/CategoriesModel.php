@@ -81,14 +81,64 @@ function getCatById($catId) {
  * 
  * @return array массив списка брендов
  */
-function getBrandsForCat($ar) { //FIXME: Поправить не существующие категории
+function getBrandsForCat($ar) { 
     $rs = [];
 
-    foreach($ar as $item){
-        $rs[] = $item['brand'];
+    //Если не существует товаров в данной категории
+    if($ar){
+        foreach ($ar as $item) {
+            $rs[] = $item['brand'];
+        }
     }
-
+   
     $rs = array_unique($rs);
     natcasesort($rs);
+
     return $rs;
 }
+
+
+/**
+ * Получить все категории, в случае с главной категорией(category/0)
+ * 
+ * @return string -id дочерних категорий
+ */
+function getAllCats() {
+    $sql = "SELECT `id_category`
+        FROM `categories`
+        WHERE (`parent_id` != '0')";
+
+    $rs = createSmartyRsArray(db()->query($sql));
+    foreach ($rs as $item) {
+        $catIds[] = $item['id_category'];
+    }
+    $catId = implode(", ", $catIds);
+
+    return $catId;
+}
+
+
+/**
+ * Получить все категории, в случае с Подглавными категориями(parent_id=0)
+ *
+ * @param int $catId id категории
+ * 
+ * @return string -id дочерних категорий
+ */
+function getSubCats($catId) {
+    $sql = "SELECT `id_category`
+        FROM `categories`
+        WHERE (`parent_id` = '0' AND `id_category` = '{$catId}')";
+    $rs = db()->query($sql);
+
+
+    if (mysqli_num_rows($rs) != 0) {
+        $catId = getChildrenForCat($catId);
+
+        foreach ($catId as $item) {
+            $catIds[] = $item['id_category'];
+        }
+        $catId = implode(", ", $catIds);
+    }
+}
+

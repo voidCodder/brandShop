@@ -27,7 +27,7 @@ $(function () {
 
 	btnClear.on("click", function () {
 		slider.noUiSlider.reset();
-
+        window.location.assign(window.location.pathname);
 	});
 
 	var arBrands; //массив брендов
@@ -47,33 +47,21 @@ $(function () {
 		arSizes = getDataFromCheckboxes('sizes', arSizes); //массив размеров
 		filterSortBy = $('select[name="sort-by"]').val();
 		filterShowCnt = $('select[name="show-kolvo"]').val();
-
-
-		var postData = {
+        
+		var getData = {
 				brands: arBrands,
 				sizes: arSizes,
-				priceFrom: filterPrice[0],
-				priceTo: filterPrice[1],
+				priceFrom: parseInt(filterPrice[0]),
+				priceTo: parseInt(filterPrice[1]),
 				sortBy: filterSortBy,
 				goodsCnt: filterShowCnt
-			}
-		
-		$.ajax({
-			method: 'get',
-			url: "/category/filter/",
-			data: postData,
-			dataType: 'json',
-			success: function (data) {
-				console.log(data);
-			}
-		});
-
-
-
-
+        }
+        
+        //обьект в URL 
+        var getDataToUrl = $.param(getData);
+        window.location.assign(window.location.pathname + "?" + getDataToUrl + '');
 
 	});
 
-	
 });
 

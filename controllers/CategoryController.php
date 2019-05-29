@@ -8,7 +8,6 @@
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
 
-
 /**
  * Формирование страницы категории
  * 
@@ -23,18 +22,14 @@ function indexAction($smarty) {
 
 
     //>AJAX
-    $prmBrands = isset($_POST['brands']) ? implode(",", $_POST['brands']) : null;
-    $prmSizes = isset($_POST['sizes']) ? implode(",", $_POST['sizes']) : null;
-    $prmPriceFrom = isset($_POST['priceFrom']) ? intval($_POST['priceFrom']) : 0;
-    $prmPriceTo = isset($_POST['priceTo']) ? intval($_POST['priceTo']) : 1000;
-    $prmSortBy = isset($_POST['sortBy']) ? $_POST['sortBy'] : null;
-    $prmGoodsCnt = isset($_POST['goodsCnt']) ? intval($_POST['goodsCnt']) : 30;
+    $prmBrands = isset($_GET['brands']) ? implode("','", $_GET['brands']) : null;
+    $prmSizes = isset($_GET['sizes']) ? implode(",", $_GET['sizes']) : null;
+    $prmPriceFrom = isset($_GET['priceFrom']) ? intval($_GET['priceFrom']) : 0;
+    $prmPriceTo = isset($_GET['priceTo']) ? intval($_GET['priceTo']) : 1000;
+    $prmSortBy = isset($_GET['sortBy']) ? $_GET['sortBy'] : null;
+    $prmGoodsCnt = isset($_GET['goodsCnt']) ? intval($_GET['goodsCnt']) : 30;
     //<
-    // $prmBrands = implode(",", $prmBrands);
-
-    // echo intval($prmPriceFrom);
-    // var_dump( $prmBrands);
-
+    
 
     //>Пагинатор
     $paginator = [];
@@ -44,22 +39,18 @@ function indexAction($smarty) {
     $paginator['link'] = "/category/$catId/?page="; 
     //<
 
-    //Если $catId=0, то показываем все товары
-    //Если главная категория, то показываем дочернии категории - иначе показываем товар
     //Если isAllCats = 1, то показывать все категории 
-    if($catId == 0) {
-        list($rsProducts, $allCnt, $rsAllProducts) = getAllProducts($paginator['offset'], $paginator['perPage']);
+    list($rsProducts, $allCnt, $rsAllProducts) = getProductsByCat($catId, $paginator['offset'], $paginator['perPage'], $prmBrands, $prmSizes, $prmPriceFrom, $prmPriceTo, $prmSortBy);
 
+    if ($catId == 0) {
         $isAllCats = 1;
         $smarty->assign('isAllCats', $isAllCats);
-    } else if($rsCategory['parent_id'] == 0) {
-        $rsChildCats = getChildrenForCat($catId);
-
-        list($rsProducts, $allCnt, $rsAllProducts) = getProductsByMainCat($rsChildCats, $paginator['offset'], $paginator['perPage']);
     } else {
-        list($rsProducts, $allCnt, $rsAllProducts) = getProductsByCat($catId, $paginator['offset'], $paginator['perPage']);
-
+        //Подкатегории в левом меню
+        $rsChildCats = getChildrenForCat($catId);
     }
+
+    
     $paginator['pageCnt'] = ceil($allCnt / $paginator['perPage']);
     $smarty->assign('paginator', $paginator);
 
@@ -77,15 +68,9 @@ function indexAction($smarty) {
 
     $smarty->assign('rsCategories', $rsCategories);
 
-
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'category');
     loadTemplate($smarty, 'footer');
-
-    echo json_encode($rsProducts);
 }
 
-function filterAction($smarty){
-    $rsProducts = '1,2,3,4,5';
-    echo json_encode($rsProducts);
-}
+

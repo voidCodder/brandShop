@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-24 20:28:48
+/* Smarty version 3.1.33, created on 2019-05-29 22:35:11
   from 'C:\OSPanel\domains\brandShop\views\category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce829d06d5de6_24427378',
+  'unifunc' => 'content_5ceedeefb33566_42033644',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a73725a2c8b668a97f7b9bb19a27e251763faed' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\category.tpl',
-      1 => 1558718801,
+      1 => 1559158509,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/menuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5ce829d06d5de6_24427378 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5ceedeefb33566_42033644 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:parts/menuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -222,7 +222,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 <option>Increase price</option>
                                 <option>Decrease price</option>
                                 <option>On new</option>
-                                <option>On discounts</option>
                             </select>
                         </div>
                         <div class="products-sort-by-container">
@@ -241,7 +240,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                 </div>
             </aside>
             <article class="catalog">
+                            <?php if ($_smarty_tpl->tpl_vars['rsProducts']->value != null) {?>
                 <section class="catalog__items grid">
+
 
                     <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['rsProducts']->value, 'item');
@@ -271,8 +272,12 @@ $</span>
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                    </section>
+                <?php } else { ?>
+                    <span class="emptyItem">There are no products matching the selection.</span>
+                <?php }?>
                     
-                </section>
+                
             </article>
             <aside class="paginator paginator_page flex">
                 <span class="paginator__pages">

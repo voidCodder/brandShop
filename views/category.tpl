@@ -153,7 +153,6 @@
                                 <option>Increase price</option>
                                 <option>Decrease price</option>
                                 <option>On new</option>
-                                <option>On discounts</option>
                             </select>
                         </div>
                         <div class="products-sort-by-container">
@@ -172,9 +171,11 @@
                 </div>
             </aside>
             <article class="catalog">
+            {* Вывод товаров *}
+                {if $rsProducts != null}
                 <section class="catalog__items grid">
 
-{* Вывод товаров *}
+
                     {foreach $rsProducts as $item}
                         
                     <div class="item">
@@ -188,9 +189,13 @@
 					</div>
 
                     {/foreach}
+                    </section>
+                {else}
+                    <span class="emptyItem">There are no products matching the selection.</span>
+                {/if}
 {* //Вывод товаров *}
                     
-                </section>
+                
             </article>
             <aside class="paginator paginator_page flex">
                 <span class="paginator__pages">

@@ -36,99 +36,62 @@ function getLastProducts($limit = null) {
  *               $cnt - кол-во всего продуктов
  *               $rsAllProducts массив всех продуктов
  */
-function getProductsByCat($itemId, $offset, $limit = 30)
+function getProductsByCat($catId, $offset, $limit, $brands, $sizes, $priceFrom, $priceTo, $sortBy)
 {
-    //Кол-во всех элементов для вывода 
-    $sqlCnt = "SELECT count(id_good) as cnt
-            FROM `goods`
-            WHERE (`id_category` = '{$itemId}' AND `status` = 1)";
-    $cnt = createSmartyRsArray(db()->query($sqlCnt));
-    //
-
-    $itemId = intval($itemId);
-    $sql = "SELECT *
-            FROM `goods`
-            WHERE (`id_category` = '{$itemId}' AND `status` = 1)";
-
-    $rsAllProducts = createSmartyRsArray(db()->query($sql));
-
-    $sql .= " LIMIT {$offset}, {$limit}";
-    
-    
-    $rs = db()->query($sql);
-    $rows = createSmartyRsArray($rs);
-    
-    return array($rows, $cnt[0]['cnt'], $rsAllProducts);
-}
-
-/**
- * Получить список всех продуктов из таблицы(goods)
- * @param int $limit кол-во элементов для вывода на страницу
- * 
- *  @return array $rows - массив продуктов Лимит
- *               $cnt - кол-во всего продуктов
- *               $rsAllProducts массив всех продуктов
- */
-function getAllProducts($offset, $limit = 30) {
-    //Кол-во всех элементов для вывода 
-    $sqlCnt = "SELECT count(id_good) as cnt
-            FROM `goods`
-            WHERE `status` = '1'";
-    $cnt = createSmartyRsArray(db()->query($sqlCnt));
-    //
-
-
-    $sql = "SELECT *
-            FROM `goods`
-            WHERE `status` = '1'";
-
-    $rsAllProducts = createSmartyRsArray(db()->query($sql));
-
-    $sql .= " LIMIT {$offset}, {$limit}";
-
-    $rs = db()->query($sql);
-    $rows = createSmartyRsArray($rs);
-
-    return array($rows, $cnt[0]['cnt'], $rsAllProducts);
-}
-
-
-/**
- * Получить продукты главной категории
- *
- * @param array $ar массив дочерниз категорий
- * 
- * @return array $rows - массив продуктов главной категории Лимит
- *               $cnt - кол-во всего продуктов
- *               $rsAllProducts массив всех продуктов
- */
-function getProductsByMainCat($ar, $offset, $limit = 30)
-{
-    foreach ($ar as $item) {
-        $catIds[] = $item['id_category'];
+    //Запись в sql форму $sortBy - 'сортировать по'
+    switch ($sortBy) {
+        case 'Name':
+            $sortBysql = 'ORDER BY `name`';
+            break;
+        case 'Increase price':
+            $sortBysql = 'ORDER BY `price`';
+            break;
+        case 'Decrease price':
+            $sortBysql = 'ORDER BY `price` DESC';
+            break;
+        case 'On new':
+            $sortBysql = 'ORDER BY `id_good` DESC';
+            break;
     }
-    $catIds = implode(", ", $catIds);
 
+    //Если все товары
+    if ($catId == 0) {
+        $catId = getAllCats();
+    }//Если категория главная, то найти дочернии 
+    else {
+        $catId = getSubCats($catId);
+    }
 
-    //Кол-во всех элементов для вывода 
-    $sqlCnt = "SELECT count(id_good) as cnt
-            FROM `goods`
-            WHERE (`id_category`
-            IN ({$catIds}) AND `status` = '1')";
-    $cnt = createSmartyRsArray(db()->query($sqlCnt));
-    //
 
     $sql = "SELECT *
             FROM `goods`
-            WHERE (`id_category`
-            IN ({$catIds}) AND `status` = '1')";
+            WHERE (`id_category` IN ({$catId})";
 
+    if($brands != null) {
+        $sql .= "AND `brand` IN ('{$brands}')";
+    }
+    // d($sql);
+    // if ($sizes != null) {
+    //     $sql .= "AND `size` IN ({$brands})";
+    // }
+    if ($priceFrom != null) {
+        $sql .= "AND `price` > ({$priceFrom})";
+    }
+    if ($priceTo != null) {
+        $sql .= "AND `price` < ({$priceTo})";
+    }
+
+    $sql .= "AND `status` = 1)";
+
+    $sql .= "{$sortBysql}";
+
+    
     $rsAllProducts = createSmartyRsArray(db()->query($sql));
-
+    //Кол-во всех элементов для вывода 
+    $cnt = count($rsAllProducts);
+    
     $sql .= " LIMIT {$offset}, {$limit}";
+    $rows = createSmartyRsArray(db()->query($sql));
 
-    $rs = db()->query($sql);
-    $rows = createSmartyRsArray($rs);
-
-    return array($rows, $cnt[0]['cnt'], $rsAllProducts);
+    return array($rows, $cnt, $rsAllProducts);
 }
