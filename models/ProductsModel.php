@@ -62,7 +62,6 @@ function getProductsByCat($catId, $offset, $limit, $brands, $sizes, $priceFrom, 
         $catId = getSubCats($catId);
     }
 
-
     $sql = "SELECT *
             FROM `goods`
             WHERE (`id_category` IN ({$catId})";
@@ -70,10 +69,19 @@ function getProductsByCat($catId, $offset, $limit, $brands, $sizes, $priceFrom, 
     if($brands != null) {
         $sql .= "AND `brand` IN ('{$brands}')";
     }
-    // d($sql);
-    // if ($sizes != null) {
-    //     $sql .= "AND `size` IN ({$brands})";
-    // }
+
+    if ($sizes != null) {
+        $sql .= "AND `id_good` IN(
+                SELECT `good_id` FROM `stock`
+                WHERE (
+                `good_id` IN (
+                SELECT `id_good` FROM goods
+                WHERE `id_category` IN ({$catId})
+                ) AND
+                `size` IN ('{$sizes}') AND `count` > 0 
+                ))";
+    }
+
     if ($priceFrom != null) {
         $sql .= "AND `price` > ({$priceFrom})";
     }

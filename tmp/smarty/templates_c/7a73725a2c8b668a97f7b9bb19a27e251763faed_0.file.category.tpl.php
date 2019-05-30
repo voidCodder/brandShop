@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-29 22:35:11
+/* Smarty version 3.1.33, created on 2019-05-30 13:53:56
   from 'C:\OSPanel\domains\brandShop\views\category.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ceedeefb33566_42033644',
+  'unifunc' => 'content_5cefb644d41fe8_57419856',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '7a73725a2c8b668a97f7b9bb19a27e251763faed' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\category.tpl',
-      1 => 1559158509,
+      1 => 1559213091,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/menuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5ceedeefb33566_42033644 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cefb644d41fe8_57419856 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:parts/menuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 

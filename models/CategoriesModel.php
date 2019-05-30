@@ -130,7 +130,7 @@ function getSubCats($catId) {
         FROM `categories`
         WHERE (`parent_id` = '0' AND `id_category` = '{$catId}')";
     $rs = db()->query($sql);
-
+    
 
     if (mysqli_num_rows($rs) != 0) {
         $catId = getChildrenForCat($catId);
@@ -139,6 +139,8 @@ function getSubCats($catId) {
             $catIds[] = $item['id_category'];
         }
         $catId = implode(", ", $catIds);
+
+        return $catId;
     }
 }
 
