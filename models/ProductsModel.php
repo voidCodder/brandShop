@@ -103,3 +103,41 @@ function getProductsByCat($catId, $offset, $limit, $brands, $sizes, $priceFrom, 
 
     return array($rows, $cnt, $rsAllProducts);
 }
+
+
+/**
+ * Получить данные продукта по ID
+ *
+ * @param int $itemId ID продукта
+ * 
+ * @return array массив данных продукта
+ */
+function getProductsById($itemId)
+{
+    $itemId = intval($itemId);
+    $sql = "SELECT *
+            FROM `goods`
+            WHERE `id_good` = '{$itemId}'";
+
+    if ($rs = db()->query($sql)) {
+        return $rs->fetch_assoc();
+    }
+}
+
+
+/**
+ * Получить размеры продукта по Id
+ *
+ * @param int $itemId ID продукта
+ * 
+ * @return array массив размеров продукта
+ */
+function getSizesFromProductById($itemId) {
+    $sql = "SELECT `size`
+            FROM `stock`
+            WHERE `good_id` = {$itemId}";
+
+    if ($rs = db()->query($sql)) {
+        return createSmartyRsArray($rs);
+    }
+}

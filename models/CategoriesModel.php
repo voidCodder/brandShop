@@ -139,8 +139,8 @@ function getSubCats($catId) {
             $catIds[] = $item['id_category'];
         }
         $catId = implode(", ", $catIds);
-
-        return $catId;
     }
+    
+    return $catId;
 }
 
