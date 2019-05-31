@@ -47,7 +47,7 @@
                         </select>
                     </div>
                     <div class="product-shop-addtocart-button">
-                        <button id="addCart_{$rsProduct['id_good']}" class="accent-button">
+                        <button id="addToCartBtn" data-product-id="{$rsProduct['id_good']}" class="accent-button">
                             <span>ADD TO CART</span>
                         </button>
                     </div>

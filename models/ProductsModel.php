@@ -141,3 +141,27 @@ function getSizesFromProductById($itemId) {
         return createSmartyRsArray($rs);
     }
 }
+
+
+/**
+ * Получить список продуктов из массива идентификаторов (ID's)
+ *
+ * @param array $itemIds массив идентификаторов продуктов
+ * 
+ * @return array массив данных продуктов
+ */
+function getProductsFromArray($itemIds) {
+
+    foreach ($itemIds as $key => $value) {
+        $strIds[] = $key;
+    }
+    $strIds = implode(', ', $strIds);
+
+    $sql = "SELECT *
+            FROM `goods`
+            WHERE `id_good` in ({$strIds})";
+            
+    if($rs = db()->query($sql)) {
+        return createSmartyRsArray($rs);
+    }
+}

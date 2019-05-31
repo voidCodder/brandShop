@@ -26,10 +26,10 @@ function indexAction($smarty)
     //получить все категории
     $rsCategories = getAllMainCatsWithChildren();
 
-    // $smarty->assign('itemInCart', 0);
-    // if (in_array($itemId, $_SESSION['cart'])) {
-    //     $smarty->assign('itemInCart', 1);
-    // }
+    $smarty->assign('itemInCart', 0);
+    if (isset($_SESSION['cart'][$itemId])) {
+        $smarty->assign('itemInCart', 1);
+    }
 
     $smarty->assign('pageTitle', $rsProduct['brand'] ." ". $rsProduct['name']);
     $smarty->assign('rsCategories', $rsCategories);

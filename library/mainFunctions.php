@@ -63,3 +63,19 @@ function redirect($url = '/') {
     header("Location: {$url}");
     exit;
 }
+
+
+/**
+ * Получить кол-во всех элементов корзины
+ * 
+ * @return int кол-во всех элементов корзины
+ */
+function getCntItemsCart() {
+    $cnt = 0;
+    foreach($_SESSION['cart'] as $value) {
+        foreach($value as $key => $item) {
+            $cnt += $item;
+        }
+    }
+    return $cnt;
+}

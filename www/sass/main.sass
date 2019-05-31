@@ -138,9 +138,7 @@ main
 			margin-left: 5px
 			margin-right: 10px
 	&__dropdown
-		&:hover
-			.dropdown__cart
-				display: flex
+		position: relative
 
 			//brushMenu__dropdown START
 
@@ -182,6 +180,7 @@ main
 			border: 1px solid #eaeaea
 			background-color: #ffffff
 			a
+				padding: 16px 74px
 				color: #4a4a4a
 			&:nth-child(2)
 				margin-top: 10px
@@ -1560,11 +1559,60 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle
 		margin: 0 7px 0 10px
 
 
+//Cart
+.cart-item
+	padding-bottom: 15px
+.cart__item
+	img
+		width: 72px
+		height: 85px
+	&-remove
+		display: flex
+		align-items: center
+		i
+			color: silver
+	&-info
+		width: -webkit-fill-available
+		padding-top: 10px
+		>span
+			display: block
+			&:nth-child(1)
+				margin-bottom: 10px
+			&:nth-child(2)
+				margin-bottom: 12px
+	&-text
+		&-brand
+			color: #222222
+			font-family: $default-font
+			font-size: 12px
+			font-weight: 700
+			text-transform: uppercase
+		&-name
+			color: #222222
+			font-family: $default-font
+			font-size: 12px
+			font-weight: 400
+		&-cnt
+			color: #f16d7f
+			font-family: $default-font
+			font-size: 12px
+			font-weight: 500
+			text-transform: uppercase
+			i
+				font-size: 10px
 
 
-
-
-
+.cart-cnt-items
+	position: absolute
+	height: 18px
+	width: 18px
+	top: -7px
+	right: 18px
+	color: #fff
+	border-radius: 50%
+	background-color: $accent
+	line-height: 18px
+	text-align: center
 
 
 

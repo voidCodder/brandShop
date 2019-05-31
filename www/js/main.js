@@ -13,3 +13,12 @@ function getData(obj_form) {
     });
     return hData;
 };
+
+/**
+ * Скрытие/открытие панели корзины
+ */
+$(function () {
+    $('.brushMenu__dropdown img').on('click', function () {
+        $('.dropdown__cart').toggle(1000);
+    }) 
+ });

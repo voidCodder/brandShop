@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-28 11:50:22
+/* Smarty version 3.1.33, created on 2019-05-31 21:45:55
   from 'C:\OSPanel\domains\brandShop\views\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cecf64eedd9e0_61842284',
+  'unifunc' => 'content_5cf1766371b586_69467968',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8b009033da9f99dd9dcc814c72730ff72d8b22e0' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\header.tpl',
-      1 => 1558815071,
+      1 => 1559328221,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/nav.tpl' => 1,
   ),
 ),false)) {
-function content_5cecf64eedd9e0_61842284 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf1766371b586_69467968 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -61,11 +61,34 @@ dist/js/scripts.min.js"><?php echo '</script'; ?>
                     <div class="brushMenu__dropdown">
                         <img src="/img/shopping-cart-header.png" alt="" class="brushMenu__icon">
 
+                                                <div class="cart-cnt-items">
+                            <?php if ($_smarty_tpl->tpl_vars['cartCntItems']->value > 0) {?> 
+                                <?php echo $_smarty_tpl->tpl_vars['cartCntItems']->value;?>
+
+                            <?php } else { ?> 0
+                            <?php }?>
+                        </div>
+                        
                         <!-- CART DROPDOWN-MENU -->
 
                         <div class="dropdown__cart flex">
                             <div class="cart__items">
-                                <div class="cart-item"></div>
+                                <div class="cart-item">
+                                    <div class="cart__item flex">
+                                        <a href=""><img src="" alt=""></a>
+                                        <div class="cart__item-info">
+                                            <span class="cart__item-text-brand">brand</span>
+                                            <span class="cart__item-text-name">name</span>
+                                            <span class="cart__item-text-cnt">
+                                            cnt 
+                                            <i>x</i>
+                                            price</span>
+                                        </div>
+                                        <div class="cart__item-remove">
+                                            <i class="fas fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="cart-item"></div>
                             </div>
                             <span class="cart__totalPrice">TOTAL $500.00</span>

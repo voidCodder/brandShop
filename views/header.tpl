@@ -32,11 +32,35 @@
                     <div class="brushMenu__dropdown">
                         <img src="/img/shopping-cart-header.png" alt="" class="brushMenu__icon">
 
+                        {* >cntItems block *}
+                        <div class="cart-cnt-items">
+                            {if $cartCntItems > 0} 
+                                {$cartCntItems}
+                            {else} 0
+                            {/if}
+                        </div>
+                        {* <cntItems block *}
+
                         <!-- CART DROPDOWN-MENU -->
 
                         <div class="dropdown__cart flex">
                             <div class="cart__items">
-                                <div class="cart-item"></div>
+                                <div class="cart-item">
+                                    <div class="cart__item flex">
+                                        <a href=""><img src="" alt=""></a>
+                                        <div class="cart__item-info">
+                                            <span class="cart__item-text-brand">brand</span>
+                                            <span class="cart__item-text-name">name</span>
+                                            <span class="cart__item-text-cnt">
+                                            cnt 
+                                            <i>x</i>
+                                            price</span>
+                                        </div>
+                                        <div class="cart__item-remove">
+                                            <i class="fas fa-times-circle"></i>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="cart-item"></div>
                             </div>
                             <span class="cart__totalPrice">TOTAL $500.00</span>

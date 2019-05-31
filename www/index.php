@@ -2,9 +2,9 @@
 session_start(); // стартуем сессию
 
 // если в сессии нет массива корзины, то создаем его
-// if (!isset($_SESSION['cart'])) {
-//     $_SESSION['cart'] = [];
-// }
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
 
 
 include_once '../config/config.php';            //  Инициализация настроек
@@ -22,10 +22,7 @@ if (isset($_SESSION['user'])) {
     $smarty->assign('arUser', $_SESSION['user']);
 }
 
-
-
-
-// // инициализируем переменную шаблонизатора кол-ва элементов в корзине
-// $smarty->assign('cartCntItems', count($_SESSION['cart']));
+// инициализируем переменную шаблонизатора кол-ва элементов в корзине
+$smarty->assign('cartCntItems', getCntItemsCart());
 
 loadPage($smarty, $controllerName, $actionName);
