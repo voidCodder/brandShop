@@ -12,26 +12,30 @@
 	<section class="CategorySale">
 		<div class="container">
 			<div class="CategorySale-wrap grid">
-				<div style="background-image:url('/img/ManSale.png')" class="MenSale CategorySale__bigBanner">
+				<div style="background-image:url('/img/ManSale.png')" class="MenSale CategorySale__bigBanner"
+				id="MenSale">
 					<div class="CategorySale_bannerContent">
 						hOT dEAL
 						<span>FOR MEN</span>
 					</div>
 				</div>
-				<div style="background-image:url('/img/WomanSale.png')" class="WomenSale CategorySale__smallBanner">
+				<div style="background-image:url('/img/WomanSale.png')" class="WomenSale CategorySale__smallBanner"
+				id="WomenSale">
 					<div class="CategorySale_bannerContent">
 						30% offer
 						<span>women</span>
 					</div>
 				</div>
-				<div class="AccesoriesSale CategorySale__smallBanner">
+				<div class="AccesoriesSale CategorySale__smallBanner"
+				id="AccesoriesSale">
 					<div class="CategorySale_bannerContent">
 						LUXIROUS & trendy
 						<span>ACCESORIES</span>
 					</div>
 					<img src="/img/AccesoriesSale.png" alt="">
 				</div>
-				<div style="background-image:url('/img/KidsSale.png')" class="KidsSale CategorySale__bigBanner">
+				<div style="background-image:url('/img/KidsSale.png')" class="KidsSale CategorySale__bigBanner"
+				id="KidsSale">
 					<div class="CategorySale_bannerContent">
 						new arrivals
 						<span>FOR kids</span>

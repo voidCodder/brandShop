@@ -6,8 +6,8 @@
  * @return в случае успеха обновятся данные корзины на странице 
  */
 $(function () {
-    $('#addToCartBtn').on('click', function addToCart(e) {
-        var itemId = e.target.getAttribute('data-product-id');
+    $('#addToCartBtn').on('click', function addToCart() {
+        var itemId = $('#addToCartBtn').attr('data-product-id');
 
         var postData = {
             size: $("select[name=sizes]").val()
@@ -20,11 +20,11 @@ $(function () {
             success: function (data) {
                 if (data['success']) {
                     $('.cart-cnt-items').html(data['cntItems']);
-                    console.log(data);
                 }
             }
         });
 
     });
+  
 
 });

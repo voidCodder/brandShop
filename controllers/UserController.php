@@ -7,8 +7,8 @@
 // Подключаем модели
 include_once '../models/CategoriesModel.php';
 include_once '../models/UsersModel.php';
-// include_once '../models/OrdersModel.php';
-// include_once '../models/PurchaseModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 /**
  * AJAX регистрация пользователя
@@ -119,11 +119,11 @@ function indexAction($smarty) {
     $rsCategories = getAllMainCatsWithChildren();
 
     //получение списка заказов пользователя
-    // $rsUserOrders = getCurUserOrders();
+    $rsUserOrders = getCurUserOrders();
 
     $smarty->assign('pageTitle', 'Account');
     $smarty->assign('rsCategories', $rsCategories);
-    // $smarty->assign('rsUserOrders', $rsUserOrders);
+    $smarty->assign('rsUserOrders', $rsUserOrders);
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'user');

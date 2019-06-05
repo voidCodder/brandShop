@@ -89,17 +89,44 @@
                                 <span><a href="#" id="userLink"></a></span>
                                 <span><a href="/user/logout/">Выход</a></span>
                             </div>
+                            <span class="myAcc__title-text"
+                            id="loginBox-text">
+                                Login
+                            </span>
                             <div class="myAcc__loginBox" id="loginBox">
-                                <span class="myAcc__title-text">Login</span>
-                                <input type="text" name="loginEmail" id="loginEmail">
-                                <input type="text" name="loginPwd" id="loginPwd">
+                                <label class="shipping-form-typetext-label">Email</label>
+                                <input type="email" name="loginEmail" 
+                                placeholder="sophie@example.com" required
+                                id="loginEmail">
+                                <label class="shipping-form-typetext-label">Password</label>
+                                <input type="password" name="loginPwd"
+                                required
+                                id="loginPwd">
                                 <button class="accent-button" id="loginBtn">login</button>
-                            </div>                           
+                            </div>
+                            <span class="myAcc__title-text"
+                            id="registerBox-text">
+                                Register
+                            </span>
                             <div class="myAcc__registerBox" id="registerBox">
-                                <span class="myAcc__title-text">Register</span>
-                                <input type="text" name="email" id="email">
-                                <input type="text" name="pwd1" id="pwd1">
-                                <input type="text" name="pwd2" id="pwd2">
+                                <label class="shipping-form-typetext-label">
+                                    Email
+                                </label>
+                                <input type="email" name="email" 
+                                placeholder="sophie@example.com" required 
+                                id="email">
+                                <label class="shipping-form-typetext-label">
+                                    Password
+                                </label>
+                                <input type="password" name="pwd1"
+                                required
+                                id="pwd1">
+                                <label class="shipping-form-typetext-label">
+                                    Repeat Password
+                                </label>
+                                <input type="password" name="pwd2"
+                                required
+                                id="pwd2">
                                 <button class="accent-button" id="registerBtn" >register</button>
                             </div>
                     {/if}     

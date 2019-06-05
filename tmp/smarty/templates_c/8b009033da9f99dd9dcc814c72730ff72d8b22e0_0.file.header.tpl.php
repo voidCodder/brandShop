@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-31 21:45:55
+/* Smarty version 3.1.33, created on 2019-06-05 12:49:06
   from 'C:\OSPanel\domains\brandShop\views\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf1766371b586_69467968',
+  'unifunc' => 'content_5cf79012e8a1d0_07487661',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8b009033da9f99dd9dcc814c72730ff72d8b22e0' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\header.tpl',
-      1 => 1559328221,
+      1 => 1559683336,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/nav.tpl' => 1,
   ),
 ),false)) {
-function content_5cf1766371b586_69467968 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf79012e8a1d0_07487661 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -118,17 +118,44 @@ dist/js/scripts.min.js"><?php echo '</script'; ?>
                                 <span><a href="#" id="userLink"></a></span>
                                 <span><a href="/user/logout/">Выход</a></span>
                             </div>
+                            <span class="myAcc__title-text"
+                            id="loginBox-text">
+                                Login
+                            </span>
                             <div class="myAcc__loginBox" id="loginBox">
-                                <span class="myAcc__title-text">Login</span>
-                                <input type="text" name="loginEmail" id="loginEmail">
-                                <input type="text" name="loginPwd" id="loginPwd">
+                                <label class="shipping-form-typetext-label">Email</label>
+                                <input type="email" name="loginEmail" 
+                                placeholder="sophie@example.com" required
+                                id="loginEmail">
+                                <label class="shipping-form-typetext-label">Password</label>
+                                <input type="password" name="loginPwd"
+                                required
+                                id="loginPwd">
                                 <button class="accent-button" id="loginBtn">login</button>
-                            </div>                           
+                            </div>
+                            <span class="myAcc__title-text"
+                            id="registerBox-text">
+                                Register
+                            </span>
                             <div class="myAcc__registerBox" id="registerBox">
-                                <span class="myAcc__title-text">Register</span>
-                                <input type="text" name="email" id="email">
-                                <input type="text" name="pwd1" id="pwd1">
-                                <input type="text" name="pwd2" id="pwd2">
+                                <label class="shipping-form-typetext-label">
+                                    Email
+                                </label>
+                                <input type="email" name="email" 
+                                placeholder="sophie@example.com" required 
+                                id="email">
+                                <label class="shipping-form-typetext-label">
+                                    Password
+                                </label>
+                                <input type="password" name="pwd1"
+                                required
+                                id="pwd1">
+                                <label class="shipping-form-typetext-label">
+                                    Repeat Password
+                                </label>
+                                <input type="password" name="pwd2"
+                                required
+                                id="pwd2">
                                 <button class="accent-button" id="registerBtn" >register</button>
                             </div>
                     <?php }?>     

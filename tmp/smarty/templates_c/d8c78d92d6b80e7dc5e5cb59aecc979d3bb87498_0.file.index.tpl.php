@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-23 18:10:01
+/* Smarty version 3.1.33, created on 2019-06-04 23:42:23
   from 'C:\OSPanel\domains\brandShop\views\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce6b7c9edfac7_49026162',
+  'unifunc' => 'content_5cf6d7af03fcc7_35730683',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd8c78d92d6b80e7dc5e5cb59aecc979d3bb87498' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\index.tpl',
-      1 => 1558624178,
+      1 => 1559680752,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ce6b7c9edfac7_49026162 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf6d7af03fcc7_35730683 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <main>
 	<div class="mainPic flex" style="background-image: url('/img/bigMan.png')">
@@ -34,26 +34,30 @@ function content_5ce6b7c9edfac7_49026162 (Smarty_Internal_Template $_smarty_tpl)
 	<section class="CategorySale">
 		<div class="container">
 			<div class="CategorySale-wrap grid">
-				<div style="background-image:url('/img/ManSale.png')" class="MenSale CategorySale__bigBanner">
+				<div style="background-image:url('/img/ManSale.png')" class="MenSale CategorySale__bigBanner"
+				id="MenSale">
 					<div class="CategorySale_bannerContent">
 						hOT dEAL
 						<span>FOR MEN</span>
 					</div>
 				</div>
-				<div style="background-image:url('/img/WomanSale.png')" class="WomenSale CategorySale__smallBanner">
+				<div style="background-image:url('/img/WomanSale.png')" class="WomenSale CategorySale__smallBanner"
+				id="WomenSale">
 					<div class="CategorySale_bannerContent">
 						30% offer
 						<span>women</span>
 					</div>
 				</div>
-				<div class="AccesoriesSale CategorySale__smallBanner">
+				<div class="AccesoriesSale CategorySale__smallBanner"
+				id="AccesoriesSale">
 					<div class="CategorySale_bannerContent">
 						LUXIROUS & trendy
 						<span>ACCESORIES</span>
 					</div>
 					<img src="/img/AccesoriesSale.png" alt="">
 				</div>
-				<div style="background-image:url('/img/KidsSale.png')" class="KidsSale CategorySale__bigBanner">
+				<div style="background-image:url('/img/KidsSale.png')" class="KidsSale CategorySale__bigBanner"
+				id="KidsSale">
 					<div class="CategorySale_bannerContent">
 						new arrivals
 						<span>FOR kids</span>

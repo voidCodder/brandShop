@@ -7,8 +7,8 @@
 // Подключаем модели
 include_once '../models/CategoriesModel.php';
 include_once '../models/ProductsModel.php';
-// include_once '../models/OrdersModel.php';
-// include_once '../models/PurchaseModel.php';
+include_once '../models/OrdersModel.php';
+include_once '../models/PurchaseModel.php';
 
 
 /**
@@ -34,16 +34,18 @@ function addtocartAction()
         $_SESSION['cart'][$itemId][$itemSize] = 1; 
              
         $resData['success'] = 1;
+        $resData['cntItems'] = getCntItemsCart();
     
     } else if (isset($_SESSION['cart']) && (isset($_SESSION['cart'][$itemId][$itemSize]))) {
 
-            $_SESSION['cart'][$itemId][$itemSize] +=1;
+        $_SESSION['cart'][$itemId][$itemSize] +=1;
 
-            $resData['success'] = 1;
+        $resData['success'] = 1;
+        $resData['cntItems'] = getCntItemsCart();
     } else {
         $resData['success'] = 0;
     }
-    $resData['cntItems'] = getCntItemsCart();
+    
     
 
     echo json_encode($resData);
@@ -59,19 +61,169 @@ function indexAction($smarty) {
     $itemIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
     $rsCategories = getAllMainCatsWithChildren();
-    $rsProducts = getProductsFromArray($itemIds);
 
-    foreach($rsProducts as $key => $item) {
-        $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']];
+    if($itemIds != null) {
+        $rsProducts = getProductsFromArray($itemIds);
+
+        foreach($rsProducts as $key => $item) {
+            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']];
+        }
+    }
+    
+    $smarty->assign('pageTitle', 'Cart');
+    $smarty->assign('rsCategories', $rsCategories);
+    $smarty->assign('rsProducts', $rsProducts);
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, 'cart');
+    loadTemplate($smarty, 'footer');
+}
+
+
+/**
+ * Удаление продукта из корзины
+ * 
+ * @param int itemId POST параметр - ID удаляемого из корзины продукта
+ * @param int itemSize POST параметр - Size удаляемого из корзины продукта
+ * 
+ * @return json информация об операции (успех, кол-во элементов в корзине)
+ */
+function removefromcartAction() {
+    $itemId = isset($_POST['itemId']) ? intval($_POST['itemId']) : null;
+    if(! $itemId) return false;
+    $itemSize = isset($_POST['itemSize']) ? $_POST['itemSize'] : null;
+    if(! $itemSize) return false;
+
+    $resData = [];
+
+    if(isset($_SESSION['cart'][$itemId][$itemSize])) {
+        unset($_SESSION['cart'][$itemId][$itemSize]);
+        $resData['success'] = 1;
+        $resData['cntItems'] = getCntItemsCart();
+    } else {
+        $resData['success'] = 0;
+    }
+    echo json_encode($resData);
+}
+
+
+/**
+ * Очистка корзины
+ * 
+ * @return json информация об операции (успех, кол-во элементов в корзине)
+ */
+function clearcartAction() {
+    $resData = [];
+
+    if(isset($_SESSION['cart'])) {
+        unset($_SESSION['cart']);
+        $resData['success'] = 1;
+        $resData['cntItems'] = 0;
+    } else {
+        $resData['success'] = 0;
+    }
+    echo json_encode($resData);
+}
+
+
+/**
+ * Формирование страницы заказа
+ *
+ */
+function orderAction($smarty) {
+    //получаем массив товаров корзины
+    $itemsIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : null;
+    $itemsSizes = isset($_GET['itemsCnt']) ? $_GET['itemsCnt'] : null;
+    //если корзина пуста, то редиректим в корзину
+    if(! $itemsIds || ! $itemsSizes) {
+        redirect('/cart/');
+        return;
     }
 
-d($rsProducts);
-    $smarty->assign('pageTitle', 'Cart');
+    //обновляем значения кол-ва товаров после /cart/
+    $i = 0;
+    foreach($itemsIds as &$item) {
+        foreach($item as $size => &$value) {
+            $value = $itemsSizes[$i];
+            $i++;
+        }
+    }
+
+    //Получаем список продуктов по массиву корзины
+    if($itemsIds != null) {
+        $rsProducts = getProductsFromArray($itemsIds);
+
+        foreach($rsProducts as $key => $item) {
+            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']];
+        }
+    }
+    
+    //полученный массив покупаемых товаров помещаем в сесионную переменную
+    $_SESSION['saleCart'] = $rsProducts;
+
+    $rsCategories = getAllMainCatsWithChildren();
+
+    //hideLoginBox переменная - для того чтобы спрятать блоки логина и регистрации в боковой панели
+    if(! isset($_SESSION['user'])) {
+        $smarty->assign('hideLoginBox', 1);
+    }
+
+    $smarty->assign('pageTitle', 'Order');
     $smarty->assign('rsCategories', $rsCategories);
     $smarty->assign('rsProducts', $rsProducts);
 
 
     loadTemplate($smarty, 'header');
-    loadTemplate($smarty, 'cart');
+    loadTemplate($smarty, 'order');
     loadTemplate($smarty, 'footer');
+}
+
+
+/**
+ * AJAX функция сохранения заказа
+ * 
+ * @param array $_SESSION['saleCart'] массив покупаемых продуктов
+ * 
+ * @return json информация о результате выполнения
+ */
+function saveOrderAction() {
+    //получаем массив покупаемых товаров
+    $cart = isset($_SESSION['saleCart']) ? $_SESSION['saleCart'] : null;
+    //если корзина пуста, то формируем ответ с ошибкой, отдаем его в формате json и выходим из функции
+    if(! $cart) {
+        $resData['success'] = 0;
+        $resData['message'] = 'No products to order';
+        echo json_encode($resData);
+        return;
+    }
+
+    $name = isset($_POST['name']) ? $_POST['name'] : null;
+    $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
+    $address = isset($_POST['address']) ? $_POST['address'] : null;
+
+    //создаем новый заказ и получаем его ID
+    $orderId = makeNewOrder($name, $phone, $address);
+
+    //если заказ не создан, то выдаем ошибку и завершаем функцию
+    if(! $orderId) {
+        $resData['success'] = 0;
+        $resData['message'] = 'Error creating order';
+        echo json_encode($resData);
+        return;
+    }
+
+    //сохраняем товары для созданного заказа
+    $res = setPurchaseForOrder($orderId, $cart);
+
+    //если успешно, то фармируем ответ, удаляем переменные корзины
+    if($res) {
+        $resData['success'] = 1;
+        $resData['message'] = 'The order is created';
+        unset($_SESSION['saleCart']);
+        unset($_SESSION['cart']);
+    } else {
+        $resData['success'] = 0;
+        $resData['message'] = 'Error entering data for order №' . $orderId;
+    }
+    echo json_encode($resData);
 }

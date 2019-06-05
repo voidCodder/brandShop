@@ -22,3 +22,12 @@ $(function () {
         $('.dropdown__cart').toggle(1000);
     }) 
  });
+
+
+ /**
+ * Валидация input
+ */
+// $(function () {
+    // $('input[type=text], input[type=tel], input[type=email]', )
+
+// });

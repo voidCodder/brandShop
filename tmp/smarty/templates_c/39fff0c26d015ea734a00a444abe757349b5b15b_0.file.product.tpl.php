@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-31 14:47:16
+/* Smarty version 3.1.33, created on 2019-06-01 17:55:58
   from 'C:\OSPanel\domains\brandShop\views\product.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf11444d02735_71173108',
+  'unifunc' => 'content_5cf291fec8c345_04689740',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '39fff0c26d015ea734a00a444abe757349b5b15b' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\product.tpl',
-      1 => 1559303234,
+      1 => 1559400952,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf11444d02735_71173108 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cf291fec8c345_04689740 (Smarty_Internal_Template $_smarty_tpl) {
 ?><main>
     <div class="container">
         <div class="product-container flex">

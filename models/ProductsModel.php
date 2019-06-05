@@ -164,4 +164,5 @@ function getProductsFromArray($itemIds) {
     if($rs = db()->query($sql)) {
         return createSmartyRsArray($rs);
     }
+
 }
