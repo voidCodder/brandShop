@@ -26,9 +26,9 @@
                 </div>
 
 {assign var=totalPrice value=0}
-{if $rsProducts != null}
+{if $rsCartProducts != null}
     
-        {foreach $rsProducts as $item}
+        {foreach $rsCartProducts as $item}
             {foreach $item['amount'] as $size => $cnt}
 
 {assign var=totalPrice value={$totalPrice} + ($item['price']*$cnt)}
@@ -112,7 +112,7 @@
 
             <div class="purchases-buttons flex">
 
-            {if $rsProducts != null}
+            {if $rsCartProducts != null}
                 <button 
                 class="purchases-buttons__button"
                 id="clearCart">
@@ -132,7 +132,7 @@
                 </button>
             </div>
 
-{if $rsProducts != null}
+{if $rsCartProducts != null}
 
             <div class="shopping-cart-forms">
                 <div class="shopping-cart-forms-wrap flex">

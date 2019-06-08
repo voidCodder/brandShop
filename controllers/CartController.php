@@ -29,24 +29,34 @@ function addtocartAction()
     $resData = [];
 
     // если значение не найдено, то добавляем
-    if (isset($_SESSION['cart']) && (!isset($_SESSION['cart'][$itemId][$itemSize]))) {
+    if (isset($_SESSION['cart']) && (!isset($_SESSION['cart'][$itemId]['amount'][$itemSize]))) {
 
-        $_SESSION['cart'][$itemId][$itemSize] = 1; 
+        $_SESSION['cart'][$itemId]['amount'][$itemSize] = 1; 
              
         $resData['success'] = 1;
         $resData['cntItems'] = getCntItemsCart();
     
-    } else if (isset($_SESSION['cart']) && (isset($_SESSION['cart'][$itemId][$itemSize]))) {
+    } else if (isset($_SESSION['cart']) && (isset($_SESSION['cart'][$itemId]['amount'][$itemSize]))) {
 
-        $_SESSION['cart'][$itemId][$itemSize] +=1;
+        $_SESSION['cart'][$itemId]['amount'][$itemSize] +=1;
 
         $resData['success'] = 1;
         $resData['cntItems'] = getCntItemsCart();
     } else {
         $resData['success'] = 0;
     }
-    
-    
+
+    //добавляем поля товара
+    if($_SESSION['cart'] != null) {
+        $rsProducts = getProductsFromArray($_SESSION['cart']);
+
+        foreach($rsProducts as $key => $item) {
+            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']]['amount'];
+            $rsProducts2[$item['id_good']] = $rsProducts[$key];
+        }
+    }
+    $_SESSION['cart'] = $rsProducts2;
+
 
     echo json_encode($resData);
 }
@@ -58,21 +68,13 @@ function addtocartAction()
  * @link  /cart/
  */
 function indexAction($smarty) {
-    $itemIds = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
     $rsCategories = getAllMainCatsWithChildren();
 
-    if($itemIds != null) {
-        $rsProducts = getProductsFromArray($itemIds);
-
-        foreach($rsProducts as $key => $item) {
-            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']];
-        }
-    }
     
     $smarty->assign('pageTitle', 'Cart');
     $smarty->assign('rsCategories', $rsCategories);
-    $smarty->assign('rsProducts', $rsProducts);
+    
 
     loadTemplate($smarty, 'header');
     loadTemplate($smarty, 'cart');
@@ -96,13 +98,19 @@ function removefromcartAction() {
 
     $resData = [];
 
-    if(isset($_SESSION['cart'][$itemId][$itemSize])) {
-        unset($_SESSION['cart'][$itemId][$itemSize]);
+    if(isset($_SESSION['cart'][$itemId]['amount'][$itemSize])) {
+        unset($_SESSION['cart'][$itemId]['amount'][$itemSize]);
         $resData['success'] = 1;
         $resData['cntItems'] = getCntItemsCart();
     } else {
         $resData['success'] = 0;
     }
+
+    //осчистка целого элемента в $_SESSION['cart']
+    if(empty($_SESSION['cart'][$itemId]['amount'])) {
+        unset($_SESSION['cart'][$itemId]);
+    }
+
     echo json_encode($resData);
 }
 

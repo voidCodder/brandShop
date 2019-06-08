@@ -166,3 +166,27 @@ function getProductsFromArray($itemIds) {
     }
 
 }
+
+
+/**
+ * Получить список продуктов со словами $str
+ *
+ * @param string $str - слова для поиска
+ */
+function getProductsBySearch($str) {
+
+    $str = mysqli_real_escape_string(db(), (string)htmlspecialchars(strip_tags($str)));
+
+    $sql = "SELECT *
+            FROM `goods`
+            WHERE (
+                `name` LIKE '%{$str}%' OR
+                `brand` LIKE '%{$str}%'
+            )
+            LIMIT 3";
+
+    if($rs = db()->query($sql)) {
+        return createSmartyRsArray($rs);
+    }
+
+}

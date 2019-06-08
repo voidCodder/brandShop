@@ -4,25 +4,28 @@
             <div class="product-img-box">
                 <div class="big-image">
                     <img src="/img/goods/{$rsProduct['id_category']}/{$rsProduct['image']}.jpg"
-                        alt="{$rsProduct['brand']} - {$rsProduct['name']}">
+                        alt="{$rsProduct['brand']} - {$rsProduct['name']}"
+                        id="product-bigImage">
                 </div>
             </div>
             <div class="product-shop-box">
                 <div class="product-shop flex">
                     <div class="product-shop-brand">
                         <span>
-                            <a href="/category/{$rsProduct['id_category']}/">
+                            <a href="/category/{$rsProduct['id_category']}/"
+                            id="product-brand">
                                 {$rsProduct['brand']}
                             </a>
                         </span>
                     </div>
                     <div class="product-shop-name">
-                        <span>
+                        <span id="product-name">
                             {$rsProduct['name']}
                         </span>
                     </div>
                     <div class="product-shop-price">
-                        <span class="product-text">
+                        <span class="product-text"
+                        id="product-price">
                             {$rsProduct['price']} $
                         </span>
                     </div>

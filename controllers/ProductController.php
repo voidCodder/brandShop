@@ -39,3 +39,18 @@ function indexAction($smarty)
     loadTemplate($smarty, 'product');
     loadTemplate($smarty, 'footer');
 }
+
+
+/**
+ * AJAX функия поиска товаров
+ * 
+ * @param string $str строка поиска
+ */
+function searchAction() {
+    $str = isset($_POST['str']) ? $_POST['str'] : null;
+    if ($str == null) exit();
+
+    $rsProducts = getProductsBySearch($str);
+
+    echo json_encode($rsProducts);
+}

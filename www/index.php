@@ -7,6 +7,7 @@ if (!isset($_SESSION['cart'])) {
 }
 
 
+
 include_once '../config/config.php';            //  Инициализация настроек
 include_once '../config/db.php';                //  Инициализация БД
 include_once '../library/mainFunctions.php';    //  Основные функции
@@ -21,6 +22,9 @@ $actionName = isset($_GET['action']) ? $_GET['action'] : 'index';
 if (isset($_SESSION['user'])) {
     $smarty->assign('arUser', $_SESSION['user']);
 }
+
+// инициализируем описание элементов в корзине для корзины
+$smarty->assign('rsCartProducts', $_SESSION['cart']);
 
 // инициализируем переменную шаблонизатора кол-ва элементов в корзине
 $smarty->assign('cartCntItems', getCntItemsCart());

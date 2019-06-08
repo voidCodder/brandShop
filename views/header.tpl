@@ -22,18 +22,28 @@
             <div class="mainHeader-wrap flex">
                 <a class="logo container__logo" href="/"> <img src="/img/Group_2.png" alt="logo"><b>BRAN</b><span>D</span></a>
                 <div class="container__searchMenu flex">
-                    <div class="dropdown searchMenu__dropdown">Browse
+                    <div class="dropdown searchMenu__dropdown">
+                        Browse
+                    </div>
+                    <input type="text" placeholder="Search fo item.."
+                    id="searchInput">
+                    <button class="searchMenu__search"></button>
+
+                    {* Search block *}
+
+                    <div class="dropdown-search" id="search-block" tabindex="1">
 
                     </div>
-                    <input type="text" placeholder="Search fo item..">
-                    <button class="searchMenu__search"></button>
+                    
+                    {* Search block *}
+
                 </div>
                 <div class="container__brushMenu flex">
                     <div class="brushMenu__dropdown">
                         <img src="/img/shopping-cart-header.png" alt="" class="brushMenu__icon">
 
                         {* >cntItems block *}
-                        <div class="cart-cnt-items">
+                        <div class="cart-cnt-items" id="cart-cnt-items">
                             {if $cartCntItems > 0} 
                                 {$cartCntItems}
                             {else} 0
@@ -44,26 +54,70 @@
                         <!-- CART DROPDOWN-MENU -->
 
                         <div class="dropdown__cart flex">
+
                             <div class="cart__items">
-                                <div class="cart-item">
+{assign var=totalPrice value=0}
+{if $rsCartProducts != null}
+
+
+    {foreach $rsCartProducts as $item}
+        {foreach $item['amount'] as $size => $cnt}
+
+{assign var=totalPrice value={$totalPrice} + ($item['price']*$cnt)}
+
+                                <div class="cart-item"
+                                data-id="{$item['id_good']}{$size}">
                                     <div class="cart__item flex">
-                                        <a href=""><img src="" alt=""></a>
+                                        <a href="/product/{$item['id_good']}/">
+                                            <img 
+                                            src="/img/goods/{$item['id_category']}/{$item['image']}.jpg" 
+                                            alt="{$item['brand']} - {$item['name']}">
+                                        </a>
                                         <div class="cart__item-info">
-                                            <span class="cart__item-text-brand">brand</span>
-                                            <span class="cart__item-text-name">name</span>
+                                            <span class="cart__item-text-brand">
+                                                {$item['brand']}
+                                            </span>
+                                            <span class="cart__item-text-name">
+                                                {$item['name']}
+                                            </span>
+                                            <span class="cart__item-text-name">
+                                                Size: {$size}
+                                            </span>
                                             <span class="cart__item-text-cnt">
-                                            cnt 
-                                            <i>x</i>
-                                            price</span>
+                                                <span data-cart-item-cnt>
+                                                    {$cnt}
+                                                </span> 
+                                                <i>x </i>
+                                                <span data-cart-item-price>
+                                                    ${$item['price']}
+                                                </span>
+                                            </span>
                                         </div>
                                         <div class="cart__item-remove">
-                                            <i class="fas fa-times-circle"></i>
+                                            <i class="fas fa-times-circle cart-item-remove"
+                                            data-cart-item-remove-id="{$item['id_good']}" 
+                                            data-cart-item-remove-size="{$size}">
+                                            </i>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="cart-item"></div>
+    {/foreach}
+        {/foreach}
+
+{else}
+    <span class="emptyItem cart-emptyItem">Cart empty</span>
+{/if}
+
+
                             </div>
-                            <span class="cart__totalPrice">TOTAL $500.00</span>
+
+
+                            <span class="cart__totalPrice">
+                                <span>TOTAL</span>
+                                <span id="cart-totalPrice">
+                                    ${$totalPrice}
+                                </span>
+                            </span>
                             <div class="cart__buttons">
                                 <button><a href="/checkout/">Checkout</a></button>
                                 <button><a href="/cart/">Go to cart</a></button>

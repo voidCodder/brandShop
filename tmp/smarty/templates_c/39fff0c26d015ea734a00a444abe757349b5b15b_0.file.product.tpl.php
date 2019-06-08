@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-01 17:55:58
+/* Smarty version 3.1.33, created on 2019-06-07 13:48:42
   from 'C:\OSPanel\domains\brandShop\views\product.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf291fec8c345_04689740',
+  'unifunc' => 'content_5cfa410ac0bc52_86053908',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '39fff0c26d015ea734a00a444abe757349b5b15b' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\product.tpl',
-      1 => 1559400952,
+      1 => 1559904373,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cf291fec8c345_04689740 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfa410ac0bc52_86053908 (Smarty_Internal_Template $_smarty_tpl) {
 ?><main>
     <div class="container">
         <div class="product-container flex">
@@ -31,7 +31,8 @@ function content_5cf291fec8c345_04689740 (Smarty_Internal_Template $_smarty_tpl)
 .jpg"
                         alt="<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['brand'];?>
  - <?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['name'];?>
-">
+"
+                        id="product-bigImage">
                 </div>
             </div>
             <div class="product-shop-box">
@@ -39,20 +40,22 @@ function content_5cf291fec8c345_04689740 (Smarty_Internal_Template $_smarty_tpl)
                     <div class="product-shop-brand">
                         <span>
                             <a href="/category/<?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['id_category'];?>
-/">
+/"
+                            id="product-brand">
                                 <?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['brand'];?>
 
                             </a>
                         </span>
                     </div>
                     <div class="product-shop-name">
-                        <span>
+                        <span id="product-name">
                             <?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['name'];?>
 
                         </span>
                     </div>
                     <div class="product-shop-price">
-                        <span class="product-text">
+                        <span class="product-text"
+                        id="product-price">
                             <?php echo $_smarty_tpl->tpl_vars['rsProduct']->value['price'];?>
  $
                         </span>

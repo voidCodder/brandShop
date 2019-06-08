@@ -35,7 +35,7 @@ gulp.task('scripts', function () {
         'www/js/**/*.js' + '',
         ])
         .pipe(concat('scripts.min.js'))
-        .pipe(uglify()) // Mifify js (opt.)
+        // .pipe(uglify()) // Mifify js (opt.)
         .pipe(gulp.dest('www/dist/js/'))
 });
 

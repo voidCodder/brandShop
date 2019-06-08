@@ -37,10 +37,11 @@ $(function () {
 
         $('[data-id=itemRealPrice]').each(function () {
             totalPrice += parseInt(this.innerText);
-            // console.log(sum);
         })
         
         $('#grandTotalPrice').html('$' + totalPrice);
         $('#subTotalPrice').html('$' + totalPrice);
     });
 });
+
+

@@ -6,7 +6,7 @@
  * @return в случае успеха обновятся данные корзины на странице 
  */
 $(function () {
-    $('.cart-item-remove').on('click', function removeFromCart(e) {
+    $('.cart__items, .purchases-table-wrap').on('click', '.cart-item-remove', function removeFromCart(e) {
         var itemId = e.target.getAttribute('data-cart-item-remove-id');
         var itemSize = e.target.getAttribute('data-cart-item-remove-size');
 
@@ -22,9 +22,37 @@ $(function () {
             success: function (data) {
                 if (data['success']) {
                     $('[data-id=' + itemId + itemSize + ']').hide('slow');
+                    //задержка удаления, для анимации
+                    setTimeout(function () {
+                        $('[data-id=' + itemId + itemSize + ']').remove();
+                    }, 600);
+                    
 
                     //общее кол-во в хедер-корзине
                     $('.cart-cnt-items').html(data['cntItems']);
+
+
+                    //>изменение totalPrice в cart
+                    var cnt = parseInt($('[data-id=' + itemId + itemSize + ']').find('[data-cart-item-cnt]').text());
+                    var price = parseInt($('[data-id=' + itemId + itemSize + ']').find('[data-cart-item-price]').text().match(/\d+/));
+                    var totalPrice = parseInt($('#cart-totalPrice').text().match(/\d+/));
+                    var endTotal = totalPrice - (price * cnt);
+                    $('#cart-totalPrice').html('$' + endTotal);
+                    //<
+
+                    //>Если нет товаров, то вывести надпись
+                    setTimeout(function () {
+                        if ($('[data-id]').length == 0) { 
+                            if ($('.dropdown__cart').children('.cart-emptyItem')) {
+                                $('.dropdown__cart .cart-emptyItem').show();
+                            } else { //если изначально нет надписи
+                                $('.dropdown__cart .cart-emptyItem').append('<span class="emptyItem cart-emptyItem">Cart empty</span>');
+                            }
+                        }
+                    }, 601);
+                    //<
+                    
+                   
                 }
             }
         });

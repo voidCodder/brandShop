@@ -4,14 +4,21 @@
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    {
+        "type": "chrome",
+        "request": "launch",
+        "name": "JS Launch Chrome",
+        "url": "http://brandshop:8080",
+        "webRoot": "${workspaceFolder}/www"
+    },    
         {
-            "name": "Listen for XDebug",
+            "name": "PHP Listen for XDebug",
             "type": "php",
             "request": "launch",
             "port": 9000
         },
         {
-            "name": "Launch currently open script",
+            "name": "PHP Launch currently open script",
             "type": "php",
             "request": "launch",
             "program": "${file}",

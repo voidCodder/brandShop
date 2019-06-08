@@ -72,9 +72,9 @@ function redirect($url = '/') {
  */
 function getCntItemsCart() {
     $cnt = 0;
-    foreach($_SESSION['cart'] as $value) {
-        foreach($value as $key => $item) {
-            $cnt += $item;
+    foreach($_SESSION['cart'] as $item) {
+        foreach($item['amount'] as $size => $count) {
+            $cnt += $count;
         }
     }
     return $cnt;
