@@ -6,7 +6,7 @@
 <main>
     <article class="hero hero_checkout">
         <div class="container">
-            <div class="content_checkout-wrap">
+            <form class="content_checkout-wrap">
                 <article class="content_checkout">
                     <ol class="ship-nav">
                         <li class="ship-nav-item ship-nav-item_li1">
@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
 
-                                <div class="shipping-form" 
+                                <form class="shipping-form" 
                                 id="order-loginBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Already registered?</span>
@@ -59,7 +59,7 @@
                                         <input type="password" name="loginPwd" required>
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">required fields</span>
                                         <div>
-                                            <button class="shipping-form-button"
+                                            <button type="submit" class="shipping-form-button"
                                             id="order-loginBtn">
                                                 <span class="shipping-form-button__text">
                                                 Log in</span>
@@ -67,9 +67,9 @@
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
-                                <div class="shipping-form hideme" id="order-registerBox">
+                                <form class="shipping-form hideme" id="order-registerBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Not registered yet?</span>
                                         <span class="shipping-form-text_light">Please log in below</span>
@@ -82,7 +82,7 @@
                                         <input type="password" name="pwd2" required>
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">required fields</span>
                                         <div>
-                                            <button class="shipping-form-button"
+                                            <button type="submit" class="shipping-form-button"
                                             id="order-registerBtn">
                                                 <span class="shipping-form-button__text">
                                                 REGISTER</span>
@@ -90,10 +90,10 @@
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
 
-                                <div class="shipping-form hideme"
+                                <form class="shipping-form hideme"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
@@ -106,8 +106,7 @@
                                         </label>
                                         <input type="tel" name="phone"
                                         value="{$arUser['phone']}"
-                                        pattern="[0-9]{1} [0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                        placeholder="0 000-000-0000"
+                                        placeholder="+7-495-000-00-00"
                                         required>
                                         <label class="shipping-form-typetext-label  label_required">
                                             Address
@@ -117,15 +116,18 @@
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">
                                             required fields
                                         </span>
-                                        <button class="shipping-form-button">
-                                            <span class="shipping-form-button__text">Continue</span>
+                                        <button type="submit" 
+                                        class="shipping-form-button"
+                                        id="order-shipping-cont">
+                                            <span
+                                            class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
         
 {else}
     
-                                <div class="shipping-form"
+                                <form class="shipping-form"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
@@ -136,10 +138,9 @@
                                         <label class="shipping-form-typetext-label  label_required">
                                             Phone
                                         </label>
-                                        <input type="tel" name="phone" 
+                                        <input type="tel" name="phone"
                                         value="{$arUser['phone']}"
-                                        pattern="[0-9]{1} [0-9]{3}-[0-9]{3}-[0-9]{4}"
-                                        placeholder="0 000-000-0000"
+                                        placeholder="+7-495-000-00-00"
                                         required>
                                         <label class="shipping-form-typetext-label  label_required">
                                             Address
@@ -149,11 +150,14 @@
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">
                                             required fields
                                         </span>
-                                        <button class="shipping-form-button">
-                                            <span class="shipping-form-button__text">Continue</span>
+                                        <button type="submit" 
+                                        class="shipping-form-button"
+                                        id="order-shipping-cont">
+                                            <span
+                                            class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
 
 {/if}
                             </div>
@@ -163,7 +167,8 @@
                                 <span class="ship-link_1">SHIPPING METHOD</span>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_shipping-method">
+                            ship-nav-item__block-wrap_shipping-method"
+                            id="order-shipping-method">
                                 <div class="form-radio-padding">
                                         <input type="radio" name="shipping-methods" id="shipping-methods_standart">
                                         <label for="shipping-methods_standart" class="shipping-form-radio-label">Standart</label>
@@ -177,12 +182,14 @@
                                         <label for="shipping-methods_usps" class="shipping-form-radio-label">USPS</label>
                                 </div>
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-shipping-method-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>
                                     </button>
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-shipping-method-cont">
                                         <span class="shipping-form-button__text">
                                             Continue
                                         </span>
@@ -195,7 +202,8 @@
                                 <span class="ship-link_1">PAYMENT</s>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_payment">
+                            ship-nav-item__block-wrap_payment"
+                            id="order-payment">
                                 <div class="ship-nav-shipping">
                                     <span class="shipping-form-text_regular ship-nav-shipping__text">
                                     SELECT YOUR 
@@ -225,12 +233,14 @@
                                     </div>
                                 </div>
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-payment-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>
                                     </button>
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-payment-cont">
                                         <span class="shipping-form-button__text">
                                             Continue
                                         </span>
@@ -243,7 +253,8 @@
                                 <span class="ship-link_1">ORDER REVIEW</span>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_order-review">
+                            ship-nav-item__block-wrap_order-review"
+                            id="order-review">
 
                                 <article class="purchases grid purchases_order">
                                     <div class="purchases-table-wrap">
@@ -319,7 +330,8 @@
 
         
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-review-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-05 15:39:47
+/* Smarty version 3.1.33, created on 2019-06-09 16:58:16
   from 'C:\OSPanel\domains\brandShop\views\cart.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf7b813d7b651_82557467',
+  'unifunc' => 'content_5cfd1078e7f0d1_52663154',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b4d1190bec657947f22d3d789c160ba805e40e3f' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\cart.tpl',
-      1 => 1559738382,
+      1 => 1560088654,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/MenuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5cf7b813d7b651_82557467 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfd1078e7f0d1_52663154 (Smarty_Internal_Template $_smarty_tpl) {
 $_smarty_tpl->_subTemplateRender("file:parts/MenuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
 
@@ -124,7 +124,7 @@ echo $_smarty_tpl->tpl_vars['size']->value;?>
                 data-id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id_good'];
 echo $_smarty_tpl->tpl_vars['size']->value;?>
 ">
-                    <input type="text" name="quantity" 
+                    <input type="number" name="quantity" 
                     data-cart-item-id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id_good'];
 echo $_smarty_tpl->tpl_vars['size']->value;?>
 " 
@@ -132,7 +132,7 @@ echo $_smarty_tpl->tpl_vars['size']->value;?>
 echo $_smarty_tpl->tpl_vars['size']->value;?>
 " class="purchases-table__quantity purchases-text"
                     value="<?php echo $_smarty_tpl->tpl_vars['cnt']->value;?>
-">
+" min="1">
                 </div>
                 <div class="purchases-table-wrap"
                 data-id="<?php echo $_smarty_tpl->tpl_vars['item']->value['id_good'];

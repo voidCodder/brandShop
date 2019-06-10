@@ -119,7 +119,9 @@
                                 </span>
                             </span>
                             <div class="cart__buttons">
-                                <button><a href="/checkout/">Checkout</a></button>
+                                <button id="go-to-checkout-btn-cart">
+                                    <a href="#">Checkout</a>
+                                </button>
                                 <button><a href="/cart/">Go to cart</a></button>
                             </div>
                         </div>
@@ -133,21 +135,24 @@
                             
 
                     {if isset($arUser)}
-                             <div id="userBox">
+                             <div class="user-userBox" 
+                             id="userBox">
                                 <span><a href="/user/" id="userLink">{$arUser['displayName']}</a></span>
-                                <span><a href="/user/logout/">Выход</a></span>
+                                <span><a href="/user/logout/">Logout</a></span>
                             </div>
                     {else}
                                 
-                            <div id="userBox" class="hideme">
+                            <div class="hideme" 
+                            id="userBox">
                                 <span><a href="#" id="userLink"></a></span>
-                                <span><a href="/user/logout/">Выход</a></span>
+                                <span><a href="/user/logout/">Logout</a></span>
                             </div>
                             <span class="myAcc__title-text"
                             id="loginBox-text">
                                 Login
                             </span>
-                            <div class="myAcc__loginBox" id="loginBox">
+
+                            <form class="myAcc__loginBox" id="loginBox">
                                 <label class="shipping-form-typetext-label">Email</label>
                                 <input type="email" name="loginEmail" 
                                 placeholder="sophie@example.com" required
@@ -156,13 +161,15 @@
                                 <input type="password" name="loginPwd"
                                 required
                                 id="loginPwd">
-                                <button class="accent-button" id="loginBtn">login</button>
-                            </div>
+                                <button type="submit" class="accent-button" id="loginBtn">login</button>
+                            </form>
+
                             <span class="myAcc__title-text"
                             id="registerBox-text">
                                 Register
                             </span>
-                            <div class="myAcc__registerBox" id="registerBox">
+
+                            <form class="myAcc__registerBox" id="registerBox">
                                 <label class="shipping-form-typetext-label">
                                     Email
                                 </label>
@@ -182,7 +189,8 @@
                                 required
                                 id="pwd2">
                                 <button class="accent-button" id="registerBtn" >register</button>
-                            </div>
+                            </form>
+                            
                     {/if}     
                         
                         </div>

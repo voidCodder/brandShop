@@ -151,7 +151,7 @@ function orderAction($smarty) {
     //обновляем значения кол-ва товаров после /cart/
     $i = 0;
     foreach($itemsIds as &$item) {
-        foreach($item as $size => &$value) {
+        foreach($item['amount'] as $size => &$value) {
             $value = $itemsSizes[$i];
             $i++;
         }
@@ -162,12 +162,14 @@ function orderAction($smarty) {
         $rsProducts = getProductsFromArray($itemsIds);
 
         foreach($rsProducts as $key => $item) {
-            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']];
+            $rsProducts[$key]['amount'] = $_SESSION['cart'][$item['id_good']]['amount'];
+            $rsProducts2[$item['id_good']] = $rsProducts[$key];
         }
     }
-    
+
     //полученный массив покупаемых товаров помещаем в сесионную переменную
-    $_SESSION['saleCart'] = $rsProducts;
+    $_SESSION['saleCart'] = $rsProducts2;
+    
 
     $rsCategories = getAllMainCatsWithChildren();
 

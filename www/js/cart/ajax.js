@@ -99,7 +99,7 @@ $(function () {
 
         var arItemsCnt = []; //массив кол-ва товаров
 
-        $("input:text[name='quantity']").each(function (index) {
+        $("input[name='quantity']").each(function (index) {
             arItemsCnt[index] = $(this).val(); 
         });
 
@@ -110,6 +110,32 @@ $(function () {
         //обьект в URL 
         var getDataToUrl = $.param(getData);
         window.location.assign(window.location.pathname +'order/'+ "?" + getDataToUrl + '');
+    
+    });
+    
+});
+/**
+ * Функция перехода в заказы с header корзины
+ *  
+ * @param array itemsCnt - массив размеров
+ */
+$(function () {
+    $('#go-to-checkout-btn-cart').on('click', function () {
+
+        var arItemsCnt = []; //массив кол-ва товаров
+
+        $(".cart__item").each(function (index) {
+            arItemsCnt[index] = parseInt($(this).find('[data-cart-item-cnt]').html()); 
+        });
+        console.log(arItemsCnt);
+
+        var getData = {
+				itemsCnt: arItemsCnt
+        }
+        
+        //обьект в URL 
+        var getDataToUrl = $.param(getData);
+        window.location.assign('http://brandshop/cart/order/'+ "?" + getDataToUrl + '');
     
     });
     

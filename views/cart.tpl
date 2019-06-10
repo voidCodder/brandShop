@@ -73,10 +73,10 @@
                 <div 
                 class="purchases-table-wrap"
                 data-id="{$item['id_good']}{$size}">
-                    <input type="text" name="quantity" 
+                    <input type="number" name="quantity" 
                     data-cart-item-id="{$item['id_good']}{$size}" 
                     id="itemCnt_{$item['id_good']}{$size}" class="purchases-table__quantity purchases-text"
-                    value="{$cnt}">
+                    value="{$cnt}" min="1">
                 </div>
                 <div class="purchases-table-wrap"
                 data-id="{$item['id_good']}{$size}">

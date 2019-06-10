@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-08 18:55:26
+/* Smarty version 3.1.33, created on 2019-06-10 11:08:49
   from 'C:\OSPanel\domains\brandShop\views\header.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfbda6e93f751_10422130',
+  'unifunc' => 'content_5cfe101122c7a3_28735051',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8b009033da9f99dd9dcc814c72730ff72d8b22e0' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\header.tpl',
-      1 => 1560009221,
+      1 => 1560154020,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/nav.tpl' => 1,
   ),
 ),false)) {
-function content_5cfbda6e93f751_10422130 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfe101122c7a3_28735051 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -177,7 +177,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 </span>
                             </span>
                             <div class="cart__buttons">
-                                <button><a href="/checkout/">Checkout</a></button>
+                                <button id="go-to-checkout-btn-cart">
+                                    <a href="#">Checkout</a>
+                                </button>
                                 <button><a href="/cart/">Go to cart</a></button>
                             </div>
                         </div>
@@ -191,22 +193,25 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                             
 
                     <?php if (isset($_smarty_tpl->tpl_vars['arUser']->value)) {?>
-                             <div id="userBox">
+                             <div class="user-userBox" 
+                             id="userBox">
                                 <span><a href="/user/" id="userLink"><?php echo $_smarty_tpl->tpl_vars['arUser']->value['displayName'];?>
 </a></span>
-                                <span><a href="/user/logout/">Выход</a></span>
+                                <span><a href="/user/logout/">Logout</a></span>
                             </div>
                     <?php } else { ?>
                                 
-                            <div id="userBox" class="hideme">
+                            <div class="hideme" 
+                            id="userBox">
                                 <span><a href="#" id="userLink"></a></span>
-                                <span><a href="/user/logout/">Выход</a></span>
+                                <span><a href="/user/logout/">Logout</a></span>
                             </div>
                             <span class="myAcc__title-text"
                             id="loginBox-text">
                                 Login
                             </span>
-                            <div class="myAcc__loginBox" id="loginBox">
+
+                            <form class="myAcc__loginBox" id="loginBox">
                                 <label class="shipping-form-typetext-label">Email</label>
                                 <input type="email" name="loginEmail" 
                                 placeholder="sophie@example.com" required
@@ -215,13 +220,15 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 <input type="password" name="loginPwd"
                                 required
                                 id="loginPwd">
-                                <button class="accent-button" id="loginBtn">login</button>
-                            </div>
+                                <button type="submit" class="accent-button" id="loginBtn">login</button>
+                            </form>
+
                             <span class="myAcc__title-text"
                             id="registerBox-text">
                                 Register
                             </span>
-                            <div class="myAcc__registerBox" id="registerBox">
+
+                            <form class="myAcc__registerBox" id="registerBox">
                                 <label class="shipping-form-typetext-label">
                                     Email
                                 </label>
@@ -241,7 +248,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                                 required
                                 id="pwd2">
                                 <button class="accent-button" id="registerBtn" >register</button>
-                            </div>
+                            </form>
+                            
                     <?php }?>     
                         
                         </div>

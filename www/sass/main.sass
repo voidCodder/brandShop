@@ -194,6 +194,9 @@ main
 		font-weight: 700
 		text-transform: uppercase
 	&__buttons
+		display: flex
+		flex-direction: column
+		align-items: center
 		color: #4a4a4a
 		font-family: $default-font
 		font-size: 14px
@@ -928,11 +931,11 @@ main
 .shipping-form
 	&-wrap
 		flex-direction: column
-	input[type="text"], input[type="password"], input[type="tel"]
-		width: 390px
-		height: 45px
-		padding: 0 15px
-		border: 1px solid #eaeaea
+		input[type="text"], input[type="password"], input[type="tel"], input[type="email"]
+			width: 390px
+			height: 45px
+			padding: 0 15px
+			border: 1px solid #eaeaea
 	&-text
 		&_regular
 			padding: 10px 0
@@ -1725,10 +1728,13 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle
 .ship-nav-item__block-wrap
 	&_payment
 		flex-direction: column
+		display: none
 	&_shipping-method
 		flex-direction: column
+		display: none
 	&_order-review
 		flex-direction: column
+		display: none
 .ship-nav-buttons
 	display: flex
 	justify-content: space-between
@@ -1845,7 +1851,19 @@ div [data-id^="purchasesForOrderId"]
 
 
 
-
+.user-userBox
+	display: flex
+	flex-direction: column
+	align-items: center
+	a
+		display: block
+		padding: 3px 20px
+		color: $accent	
+		font-family: $default-font
+		font-size: 14px
+		font-weight: 300
+		line-height: 24px
+		
 
 
 
@@ -1876,6 +1894,11 @@ input[type="text"], input[type="password"], input[type="tel"]
 		font-family: $default-font
 		font-size: 13px
 		font-weight: 300
+input[type="email"], input[type="password"], input[type="tel"]
+	&:invalid:not(:placeholder-shown) 
+		border-color: red
+	&:valid:not(:placeholder-shown) 
+		border-color: green
 .emptyItem
     color: grey
     font-family: $light-font

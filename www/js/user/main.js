@@ -36,11 +36,13 @@ function login(postData) {
         dataType: 'json',
         success: function (data) {
             if (data['success']) {
-                $('#registerBox').hide();
-                $('#loginBox').hide();
+
+                $('#registerBox, #registerBox-text').hide();
+                $('#loginBox, #loginBox-text').hide();
 
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['displayName']);
+                $('#userBox').addClass('user-userBox');
                 $('#userBox').show();
 
                 //блок в orders
@@ -70,11 +72,12 @@ function registerNewUser(postData) {
                 alert('Регистрация прошла успешно');
 
                 //> блок вверху
-                $('#registerBox').hide();
-                $('#loginBox').hide();
+                $('#registerBox, #registerBox-text').hide();
+                $('#loginBox, #loginBox-text').hide();
 
                 $('#userLink').attr('href', '/user/');
                 $('#userLink').html(data['userName']);
+                $('#userBox').addClass('user-userBox');
                 $('#userBox').show();
 
                 //блок в orders
@@ -103,5 +106,6 @@ function showProducts(id) {
     } else {
         $(objName).hide("slow");
     }
+
 } 
     

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-04 23:25:42
+/* Smarty version 3.1.33, created on 2019-06-10 11:08:49
   from 'C:\OSPanel\domains\brandShop\views\order.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cf6d3c65d3e14_15277018',
+  'unifunc' => 'content_5cfe101162a973_08820467',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f23330d4c0cd14bbfad351850088c0b0da18f17' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\order.tpl',
-      1 => 1559679889,
+      1 => 1560153947,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/MenuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <?php $_smarty_tpl->_subTemplateRender("file:parts/MenuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -30,7 +30,7 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
 <main>
     <article class="hero hero_checkout">
         <div class="container">
-            <div class="content_checkout-wrap">
+            <form class="content_checkout-wrap">
                 <article class="content_checkout">
                     <ol class="ship-nav">
                         <li class="ship-nav-item ship-nav-item_li1">
@@ -71,18 +71,19 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                     </div>
                                 </div>
 
-                                <div class="shipping-form" 
+                                <form class="shipping-form" 
                                 id="order-loginBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Already registered?</span>
                                         <span class="shipping-form-text_light">Please log in below</span>
-                                        <label for="email" class="shipping-form-typetext-label label_required">EMAIL ADDRESS</label>
-                                        <input type="text" name="loginEmail">
-                                        <label for="password" class="shipping-form-typetext-label  label_required">PASSWORD</label>
-                                        <input type="password" name="loginPwd">
+                                        <label class="shipping-form-typetext-label label_required">EMAIL ADDRESS</label>
+                                        <input type="email" name="loginEmail"
+                                        placeholder="sophie@example.com" required>
+                                        <label class="shipping-form-typetext-label  label_required">PASSWORD</label>
+                                        <input type="password" name="loginPwd" required>
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">required fields</span>
                                         <div>
-                                            <button class="shipping-form-button"
+                                            <button type="submit" class="shipping-form-button"
                                             id="order-loginBtn">
                                                 <span class="shipping-form-button__text">
                                                 Log in</span>
@@ -90,21 +91,22 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
-                                <div class="shipping-form hideme" id="order-registerBox">
+                                <form class="shipping-form hideme" id="order-registerBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Not registered yet?</span>
                                         <span class="shipping-form-text_light">Please log in below</span>
                                         <label class="shipping-form-typetext-label label_required">EMAIL ADDRESS</label>
-                                        <input type="text" name="email">
+                                        <input type="email" name="email"
+                                        placeholder="sophie@example.com" required>
                                         <label class="shipping-form-typetext-label  label_required">PASSWORD</label>
-                                        <input type="password" name="pwd1">
+                                        <input type="password" name="pwd1" required>
                                         <label class="shipping-form-typetext-label  label_required">REPEAT PASSWORD</label>
-                                        <input type="password" name="pwd2">
+                                        <input type="password" name="pwd2" required>
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">required fields</span>
                                         <div>
-                                            <button class="shipping-form-button"
+                                            <button type="submit" class="shipping-form-button"
                                             id="order-registerBtn">
                                                 <span class="shipping-form-button__text">
                                                 REGISTER</span>
@@ -112,16 +114,16 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </div>
+                                </form>
 
 
-                                <div class="shipping-form hideme"
+                                <form class="shipping-form hideme"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
                                             Name
                                         </label>
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" required
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['user_name'];?>
 ">
                                         <label class="shipping-form-typetext-label  label_required">
@@ -130,37 +132,35 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                         <input type="tel" name="phone"
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['phone'];?>
 "
-                                        pattern="[0-9]<?php echo 1;?>
- [0-9]<?php echo 3;?>
--[0-9]<?php echo 3;?>
--[0-9]<?php echo 4;?>
-"
-                                        placeholder="0 000-000-0000"
+                                        placeholder="+7-495-000-00-00"
                                         required>
                                         <label class="shipping-form-typetext-label  label_required">
                                             Address
                                         </label>
-                                        <input type="text" name="address"
+                                        <input type="text" name="address" required
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['address'];?>
 ">
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">
                                             required fields
                                         </span>
-                                        <button class="shipping-form-button">
-                                            <span class="shipping-form-button__text">Continue</span>
+                                        <button type="submit" 
+                                        class="shipping-form-button"
+                                        id="order-shipping-cont">
+                                            <span
+                                            class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
         
 <?php } else { ?>
     
-                                <div class="shipping-form"
+                                <form class="shipping-form"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
                                             Name
                                         </label>
-                                        <input type="text" name="name"
+                                        <input type="text" name="name" required
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['user_name'];?>
 ">
                                         <label class="shipping-form-typetext-label  label_required">
@@ -169,27 +169,25 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                         <input type="tel" name="phone"
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['phone'];?>
 "
-                                        pattern="[0-9]<?php echo 1;?>
- [0-9]<?php echo 3;?>
--[0-9]<?php echo 3;?>
--[0-9]<?php echo 4;?>
-"
-                                        placeholder="0 000-000-0000"
+                                        placeholder="+7-495-000-00-00"
                                         required>
                                         <label class="shipping-form-typetext-label  label_required">
                                             Address
                                         </label>
-                                        <input type="text" name="address"
+                                        <input type="text" name="address" required
                                         value="<?php echo $_smarty_tpl->tpl_vars['arUser']->value['address'];?>
 ">
                                         <span class="shipping-form-text_light shipping-form-text_light_redreq">
                                             required fields
                                         </span>
-                                        <button class="shipping-form-button">
-                                            <span class="shipping-form-button__text">Continue</span>
+                                        <button type="submit" 
+                                        class="shipping-form-button"
+                                        id="order-shipping-cont">
+                                            <span
+                                            class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </div>
+                                </form>
 
 <?php }?>
                             </div>
@@ -199,7 +197,8 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                 <span class="ship-link_1">SHIPPING METHOD</span>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_shipping-method">
+                            ship-nav-item__block-wrap_shipping-method"
+                            id="order-shipping-method">
                                 <div class="form-radio-padding">
                                         <input type="radio" name="shipping-methods" id="shipping-methods_standart">
                                         <label for="shipping-methods_standart" class="shipping-form-radio-label">Standart</label>
@@ -213,12 +212,14 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                         <label for="shipping-methods_usps" class="shipping-form-radio-label">USPS</label>
                                 </div>
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-shipping-method-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>
                                     </button>
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-shipping-method-cont">
                                         <span class="shipping-form-button__text">
                                             Continue
                                         </span>
@@ -231,7 +232,8 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                 <span class="ship-link_1">PAYMENT</s>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_payment">
+                            ship-nav-item__block-wrap_payment"
+                            id="order-payment">
                                 <div class="ship-nav-shipping">
                                     <span class="shipping-form-text_regular ship-nav-shipping__text">
                                     SELECT YOUR 
@@ -261,12 +263,14 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                     </div>
                                 </div>
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-payment-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>
                                     </button>
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-payment-cont">
                                         <span class="shipping-form-button__text">
                                             Continue
                                         </span>
@@ -279,7 +283,8 @@ function content_5cf6d3c65d3e14_15277018 (Smarty_Internal_Template $_smarty_tpl)
                                 <span class="ship-link_1">ORDER REVIEW</span>
                             </span>
                             <div class="ship-nav-item__block-wrap flex
-                            ship-nav-item__block-wrap_order-review">
+                            ship-nav-item__block-wrap_order-review"
+                            id="order-review">
 
                                 <article class="purchases grid purchases_order">
                                     <div class="purchases-table-wrap">
@@ -311,8 +316,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['size']->value => $_smarty_tpl->tpl_va
 
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['totalPrice']->value;
-$_prefixVariable1 = ob_get_clean();
-$_smarty_tpl->_assignInScope('totalPrice', $_prefixVariable1+($_smarty_tpl->tpl_vars['item']->value['price']*$_smarty_tpl->tpl_vars['cnt']->value));?>
+$_prefixVariable2 = ob_get_clean();
+$_smarty_tpl->_assignInScope('totalPrice', $_prefixVariable2+($_smarty_tpl->tpl_vars['item']->value['price']*$_smarty_tpl->tpl_vars['cnt']->value));?>
 
                                     <div 
                                     class="purchases-table-wrap purchases-table-wrap_descriptor" 
@@ -386,7 +391,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
         
                                 <div class="ship-nav-buttons">
-                                    <button class="shipping-form-button">
+                                    <button class="shipping-form-button"
+                                    id="order-review-back">
                                         <span class="shipping-form-button__text">
                                             BACK
                                         </span>

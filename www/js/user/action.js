@@ -31,4 +31,9 @@ $(function () {
         registerNewUser(postData);
     });
     //<ORDER
+
+
+    $('#loginBox, #registerBox').on('submit', function (event) {
+        event.preventDefault();
+    })
 })

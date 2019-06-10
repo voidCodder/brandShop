@@ -4,7 +4,8 @@
 $(function () {
 
     //при не фокусе скрыть
-    $('#searchInput').blur(function(){$('#search-block').hide();});
+    
+    $('#search-block').mouseleave(function(){$('#search-block').hide();});
 
     //задержка при последовательном введении множества символов
     $('#searchInput').on('keyup', delay(function () {
