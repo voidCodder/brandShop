@@ -96,7 +96,7 @@
                 </span>
             </div>
             <div class="purchases-table-wrap">
-                <span class="purchases-text">{$item['id']}</span>
+                <span class="purchases-text">{$item['id_order']}</span>
             </div>
             <div class="purchases-table-wrap">
                 <span class="purchases-text">

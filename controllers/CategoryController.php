@@ -30,7 +30,7 @@ function indexAction($smarty) {
     $prmSizes = isset($_GET['sizes']) ? implode("','", $_GET['sizes']) : null;
     $prmPriceFrom = isset($_GET['priceFrom']) ? intval($_GET['priceFrom']) : 0;
     $prmPriceTo = isset($_GET['priceTo']) ? intval($_GET['priceTo']) : 1000;
-    $prmSortBy = isset($_GET['sortBy']) ? $_GET['sortBy'] : null;
+    $prmSortBy = isset($_GET['sortBy']) ? $_GET['sortBy'] : 'Name';
     $prmGoodsCnt = isset($_GET['goodsCnt']) ? intval($_GET['goodsCnt']) : 30;
     //<
     
