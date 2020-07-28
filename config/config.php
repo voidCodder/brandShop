@@ -10,9 +10,9 @@ define('DBNAME', 'brandshop');
 define('DBUSER', 'root');
 define('DBPASS', '');
 // define('DBHOST', 'localhost');
-// define('DBNAME', 'id9631637_brandshop');
-// define('DBUSER', 'id9631637_root1');
-// define('DBPASS', 'root1');
+// define('DBNAME', 'id9888922_brandshop');
+// define('DBUSER', 'id9888922_root_1');
+// define('DBPASS', 'root_1');
 
 //>  Константы для обращения к контроллерам
 define('PathPrefix', '../controllers/');

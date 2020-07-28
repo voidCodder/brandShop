@@ -1865,10 +1865,80 @@ div [data-id^="purchasesForOrderId"]
 		line-height: 24px
 		
 
+//About
+.aboutpage
+	padding: 20px 70px 0 
+	margin-bottom: 100px
+	span
+		display: block
+		font-family: $default-font
+		color: #000
+		font-size: 13px
+		line-height: 20px
+	h1,h2
+		display: block
+		font-family: $default-font
+		color: #000
+		text-transform: uppercase
+.about
+	&-img-container
+		display: flex
+		justify-content: center
+		img
+			min-width: 100%
 
+//CONTACT
+.contactpage
+	padding: 20px 70px 0 
+	margin-bottom: 100px
+	h1,h2,h3
+		display: block
+		font-family: $default-font
+		color: #000
+		text-transform: uppercase
+	span
+		display: block
+		font-family: $default-font
+		color: #000
+		font-size: 13px
+		line-height: 20px
+		&:first-of-type
+			margin-bottom: 20px
+	&-block
+		display: flex
+		flex-direction: column
+		justify-content: center
+		text-align: center
+		&_border
+			padding: 60px
+			border: 1px solid black
+	&__link
+		a
+			color: #58595b
+			text-decoration: underline
 
-
-
+//CareersPage
+.careerspage
+	padding: 20px 70px 0 
+	margin-bottom: 100px
+	h1,h2
+		display: block
+		font-family: $default-font
+		color: #000
+		text-transform: uppercase
+	span
+		display: block
+		font-family: $default-font
+		color: #000
+		font-size: 13px
+		line-height: 20px
+		&:first-of-type
+			margin-bottom: 20px
+	h1
+		text-align: center
+		margin-bottom: 40px
+	&-careers
+		margin-bottom: 50px
 
 
 
@@ -1894,7 +1964,7 @@ input[type="text"], input[type="password"], input[type="tel"]
 		font-family: $default-font
 		font-size: 13px
 		font-weight: 300
-input[type="email"], input[type="password"], input[type="tel"]
+input[type="email"], input[type="tel"]
 	&:invalid:not(:placeholder-shown) 
 		border-color: red
 	&:valid:not(:placeholder-shown) 

@@ -28,3 +28,42 @@ function indexAction($smarty) {
     loadTemplate($smarty, 'index');
     loadTemplate($smarty, 'footer');
 }
+
+
+function aboutAction($smarty) {
+    $rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('pageTitle', 'The company');
+    $smarty->assign('rsCategories', $rsCategories);
+
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, '-about');
+    loadTemplate($smarty, 'footer');
+}
+
+
+function presscontactAction($smarty) {
+    $rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('pageTitle', 'The company');
+    $smarty->assign('rsCategories', $rsCategories);
+
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, '-presscontact');
+    loadTemplate($smarty, 'footer');
+}
+
+
+function careersAction($smarty) {
+    $rsCategories = getAllMainCatsWithChildren();
+
+    $smarty->assign('pageTitle', 'The company');
+    $smarty->assign('rsCategories', $rsCategories);
+
+
+    loadTemplate($smarty, 'header');
+    loadTemplate($smarty, '-careers');
+    loadTemplate($smarty, 'footer');
+}

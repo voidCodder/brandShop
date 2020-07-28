@@ -2,7 +2,8 @@
 /**
  * Изменение данных пользователя
  */
-$('#updateUserDataBtn').on('click', function updateUserData() {
+/* Не работает:? 
+$(document).ready($('#updateUserDataBtn').on('click', function updateUserData() {
 
     var postData = getData('#userInf');
 
@@ -20,8 +21,27 @@ $('#updateUserDataBtn').on('click', function updateUserData() {
             }
         }
     });
-});
+})
+); */
+function updateUserData() {
 
+    var postData = getData('#userInf');
+
+    $.ajax({
+        method: 'POST',
+        url: "/user/update/",
+        data: postData,
+        dataType: 'json',
+        success: function (data) {
+            if (data['success']) {
+                $('#userLink').html(data['UserName']);
+                alert(data['message']);
+            } else {
+                alert(data['message']);
+            }
+        }
+    });
+};
 
 /**
  * Авторизация пользователя

@@ -38,6 +38,7 @@ function getLastProducts($limit = null) {
  */
 function getProductsByCat($catId, $offset, $limit, $brands, $sizes, $priceFrom, $priceTo, $sortBy)
 {
+    
     //Запись в sql форму $sortBy - 'сортировать по'
     switch ($sortBy) {
         case 'Name':

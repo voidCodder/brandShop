@@ -31,19 +31,19 @@
                         <span>COMPANY</span>
                     </li>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="/index">Home</a>
                     </li>
                     <li>
-                        <a href="#">Shop</a>
+                        <a href="/index/about/">Shop</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href="/index/about/">About</a>
                     </li>
                     <li>
-                        <a href="#">How It Works</a>
+                        <a href="/index/presscontact/">Press contact</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="/index/careers/">Careers</a>
                     </li>
                 </ul>
             </div>
@@ -75,19 +75,19 @@
                         <span>SHOP CATEGORY</span>
                     </li>
                     <li>
-                        <a href="#">Men</a>
+                        <a href="/category/1/">Men</a>
                     </li>
                     <li>
-                        <a href="#">Women</a>
+                        <a href="/category/2/">Women</a>
                     </li>
                     <li>
-                        <a href="#">Child</a>
+                        <a href="/category/3/">Kids</a>
                     </li>
                     <li>
-                        <a href="#">Apparel</a>
+                        <a href="/category/4/">Accessories</a>
                     </li>
                     <li>
-                        <a href="#">Brows All</a>
+                        <a href="/category/0/">Browse All</a>
                     </li>
                 </ul>
             </div>

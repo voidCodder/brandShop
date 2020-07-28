@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-10 11:08:49
+/* Smarty version 3.1.33, created on 2020-07-28 11:46:45
   from 'C:\OSPanel\domains\brandShop\views\order.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfe101162a973_08820467',
+  'unifunc' => 'content_5f1fe5f53cd5f6_76467328',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '0f23330d4c0cd14bbfad351850088c0b0da18f17' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\order.tpl',
-      1 => 1560153947,
+      1 => 1595926002,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:parts/MenuArrivals.tpl' => 1,
   ),
 ),false)) {
-function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1fe5f53cd5f6_76467328 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 
 <?php $_smarty_tpl->_subTemplateRender("file:parts/MenuArrivals.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
@@ -71,7 +71,7 @@ function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl)
                                     </div>
                                 </div>
 
-                                <form class="shipping-form" 
+                                <div class="shipping-form" 
                                 id="order-loginBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Already registered?</span>
@@ -91,9 +91,9 @@ function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl)
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
 
-                                <form class="shipping-form hideme" id="order-registerBox">
+                                <div class="shipping-form hideme" id="order-registerBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Not registered yet?</span>
                                         <span class="shipping-form-text_light">Please log in below</span>
@@ -114,10 +114,10 @@ function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl)
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
 
 
-                                <form class="shipping-form hideme"
+                                <div class="shipping-form hideme"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
@@ -150,7 +150,7 @@ function content_5cfe101162a973_08820467 (Smarty_Internal_Template $_smarty_tpl)
                                             class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </form>
+                                </div>
         
 <?php } else { ?>
     
@@ -316,8 +316,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['size']->value => $_smarty_tpl->tpl_va
 
 <?php ob_start();
 echo $_smarty_tpl->tpl_vars['totalPrice']->value;
-$_prefixVariable2 = ob_get_clean();
-$_smarty_tpl->_assignInScope('totalPrice', $_prefixVariable2+($_smarty_tpl->tpl_vars['item']->value['price']*$_smarty_tpl->tpl_vars['cnt']->value));?>
+$_prefixVariable1 = ob_get_clean();
+$_smarty_tpl->_assignInScope('totalPrice', $_prefixVariable1+($_smarty_tpl->tpl_vars['item']->value['price']*$_smarty_tpl->tpl_vars['cnt']->value));?>
 
                                     <div 
                                     class="purchases-table-wrap purchases-table-wrap_descriptor" 

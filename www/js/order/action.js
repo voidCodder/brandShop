@@ -19,6 +19,15 @@ $(function () {
 
 
     //1.Shipping
+
+    //Если user уже залогинен
+    $('#order-shipping-cont').on('submit', function (e) {
+        $('#order-data-user').hide();
+        $('#order-shipping-method').show('slow');
+        e.preventDefault();
+    });
+
+
     $('#order-data-user').on('submit', function (e) {
         if ($('#order-data-user')[0].checkValidity() && validateInput.phone.test($('input[name="phone"]').val())) {
             $('#order-data-user').hide();
@@ -30,7 +39,6 @@ $(function () {
         e.preventDefault();
     });
     $('#order-loginBox, #order-registerBox').on('submit', function (e) {
-        //
         e.preventDefault();
     });
     //2.Shipping method

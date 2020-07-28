@@ -9,11 +9,11 @@ $(function () {
 
 
 /**
- *  Переход на предыдущую страницу
+ *  Переход на главную страницу
  */
 $(function () {
     $('#pageBack').on('click', function () {
-        history.back(); 
+        document.location.href = "http://brandshop/";
     });
 });
 

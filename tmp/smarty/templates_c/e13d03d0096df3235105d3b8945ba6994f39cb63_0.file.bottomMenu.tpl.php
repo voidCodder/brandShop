@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-05-19 20:27:03
+/* Smarty version 3.1.33, created on 2019-06-12 19:42:59
   from 'C:\OSPanel\domains\brandShop\views\parts\bottomMenu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5ce191e78e82b7_05616633',
+  'unifunc' => 'content_5d012b931d8822_36089027',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'e13d03d0096df3235105d3b8945ba6994f39cb63' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\parts\\bottomMenu.tpl',
-      1 => 1558286782,
+      1 => 1560357777,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5ce191e78e82b7_05616633 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d012b931d8822_36089027 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="container">
     <aside class="bottomMenu">
         <div class="bottomMenu-container flex">
@@ -54,19 +54,19 @@ function content_5ce191e78e82b7_05616633 (Smarty_Internal_Template $_smarty_tpl)
                         <span>COMPANY</span>
                     </li>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="/index">Home</a>
                     </li>
                     <li>
-                        <a href="#">Shop</a>
+                        <a href="/index/about/">Shop</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href="/index/about/">About</a>
                     </li>
                     <li>
-                        <a href="#">How It Works</a>
+                        <a href="/index/presscontact/">Press contact</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="/index/careers/">Careers</a>
                     </li>
                 </ul>
             </div>
@@ -98,19 +98,19 @@ function content_5ce191e78e82b7_05616633 (Smarty_Internal_Template $_smarty_tpl)
                         <span>SHOP CATEGORY</span>
                     </li>
                     <li>
-                        <a href="#">Men</a>
+                        <a href="/category/1/">Men</a>
                     </li>
                     <li>
-                        <a href="#">Women</a>
+                        <a href="/category/2/">Women</a>
                     </li>
                     <li>
-                        <a href="#">Child</a>
+                        <a href="/category/3/">Kids</a>
                     </li>
                     <li>
-                        <a href="#">Apparel</a>
+                        <a href="/category/4/">Accessories</a>
                     </li>
                     <li>
-                        <a href="#">Brows All</a>
+                        <a href="/category/0/">Browse All</a>
                     </li>
                 </ul>
             </div>

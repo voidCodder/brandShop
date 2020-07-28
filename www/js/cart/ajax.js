@@ -135,8 +135,8 @@ $(function () {
         
         //обьект в URL 
         var getDataToUrl = $.param(getData);
-        window.location.assign('http://brandshop/cart/order/'+ "?" + getDataToUrl + '');
-    
+        window.location.assign(location.origin +'/cart/order/'+ "?" + getDataToUrl + '');
+        
     });
     
 });

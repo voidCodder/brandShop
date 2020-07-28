@@ -44,7 +44,7 @@
             <div class="dashboard-contact-box_button">
                 <button class="dashboard-contact__button accent-button" 
                 value="Save changes" 
-                id="updateUserDataBtn">
+                id="updateUserDataBtn" onclick="updateUserData()">
                     Save changes
                 </button>
             </div>

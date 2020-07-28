@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-06-09 15:45:12
+/* Smarty version 3.1.33, created on 2020-07-27 19:09:54
   from 'C:\OSPanel\domains\brandShop\views\user.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5cfcff5865e9b4_51453289',
+  'unifunc' => 'content_5f1efc52239915_03755215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '99d1596f903df9af4028c85938f1ad3fe6a77400' => 
     array (
       0 => 'C:\\OSPanel\\domains\\brandShop\\views\\user.tpl',
-      1 => 1560084303,
+      1 => 1595866189,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5cfcff5865e9b4_51453289 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f1efc52239915_03755215 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <main class="user-main" style="background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/img/Logo.svg')">
 
@@ -74,7 +74,7 @@ function content_5cfcff5865e9b4_51453289 (Smarty_Internal_Template $_smarty_tpl)
             <div class="dashboard-contact-box_button">
                 <button class="dashboard-contact__button accent-button" 
                 value="Save changes" 
-                id="updateUserDataBtn">
+                id="updateUserDataBtn" onclick="updateUserData()">
                     Save changes
                 </button>
             </div>

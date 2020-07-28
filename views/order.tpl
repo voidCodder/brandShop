@@ -47,7 +47,7 @@
                                     </div>
                                 </div>
 
-                                <form class="shipping-form" 
+                                <div class="shipping-form" 
                                 id="order-loginBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Already registered?</span>
@@ -67,9 +67,9 @@
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
 
-                                <form class="shipping-form hideme" id="order-registerBox">
+                                <div class="shipping-form hideme" id="order-registerBox">
                                     <div class="shipping-form-wrap flex">
                                         <span class="shipping-form-text_regular">Not registered yet?</span>
                                         <span class="shipping-form-text_light">Please log in below</span>
@@ -90,10 +90,10 @@
                                             <span class="shipping-form-text_regular pad-l30">Forgot Password ?</span>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
 
 
-                                <form class="shipping-form hideme"
+                                <div class="shipping-form hideme"
                                 id="order-data-user">
                                     <div class="shipping-form-wrap flex">
                                         <label class="shipping-form-typetext-label label_required">
@@ -123,7 +123,7 @@
                                             class="shipping-form-button__text">Continue</span>
                                         </button>
                                     </div>
-                                </form>
+                                </div>
         
 {else}
     
